@@ -1,0 +1,404 @@
+/* Custom styles for Area website - Modern Minimal Design */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* Root variables for consistent colors */
+:root {
+    --primary-text: #111827;
+    --secondary-text: #6B7280;
+    --accent-color: #16A34A;
+    --background: #FFFFFF;
+    --hover-color: #000000;
+    --sage-green: #6B705E;
+    --sage-green-dark: #5A5F4E;
+}
+
+/* Smooth scrolling for navigation links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Body styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background);
+    color: var(--primary-text);
+    letter-spacing: 0.025em;
+}
+
+/* Typography */
+.font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Custom sage green colors for Tailwind */
+.bg-sage-green {
+    background-color: #6B705E;
+}
+
+.bg-sage-green-dark {
+    background-color: #5A5F4E;
+}
+
+.text-sage-green {
+    color: #6B705E;
+}
+
+.hover\:text-sage-green:hover {
+    color: #6B705E;
+}
+
+/* Custom lime colors for Discover More button */
+.bg-lime-100 {
+    background-color: #E6EDDA;
+}
+
+.hover\:bg-lime-200:hover {
+    background-color: #DCE4CA;
+}
+
+/* Navigation styles */
+#navbar {
+    transition: all 0.3s ease;
+}
+
+#navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+/* Hero section styling */
+.hero-title {
+    font-family: 'Recoleta', serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+/* Tablet mockup styling */
+.tablet-mockup {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Background blocks styling */
+.bg-block-left {
+    background-color: var(--background-block);
+    opacity: 0.6;
+}
+
+.bg-block-right {
+    background-color: var(--background-block);
+    opacity: 0.6;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.slide-in-left {
+    animation: slideInFromLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+    animation: slideInFromRight 0.8s ease-out;
+}
+
+.scale-in {
+    animation: scaleIn 0.6s ease-out;
+}
+
+/* Section transition effects */
+section {
+    transition: all 0.3s ease-out;
+}
+
+section:hover {
+    transform: translateY(-2px);
+}
+
+/* Enhanced navigation link transitions */
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease-out;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #16A34A, #059669);
+    transition: width 0.3s ease-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Copy button styles */
+.copy-btn {
+    transition: all 0.2s ease-out;
+    border-radius: 4px;
+}
+
+.copy-btn:hover {
+    transform: scale(1.1);
+}
+
+.copy-btn:active {
+    transform: scale(0.95);
+}
+
+/* Copy notification styles */
+#copy-notification {
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover effects */
+.learn-more-btn {
+    background-color: var(--accent-button);
+    transition: all 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: var(--hover-green);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(70, 92, 51, 0.3);
+}
+
+/* Navigation link hover effects */
+.nav-link {
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--hover-green);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .tablet-mockup {
+        width: 320px;
+        height: 200px;
+    }
+    
+    .bg-block-left,
+    .bg-block-right {
+        width: 200px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .tablet-mockup {
+        width: 280px;
+        height: 180px;
+    }
+    
+    .bg-block-left,
+    .bg-block-right {
+        width: 160px;
+        height: 100px;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-button);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hover-green);
+}
+
+/* Focus styles for accessibility */
+button:focus,
+a:focus {
+    outline: 2px solid var(--accent-button);
+    outline-offset: 2px;
+}
+
+/* Loading animation */
+.loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--accent-button);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Journey Page Specific Styles */
+.journey-milestone {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.journey-milestone.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Make first milestone visible by default */
+.journey-milestone:first-child {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.road-path {
+    background: linear-gradient(180deg, #D1D5DB 0%, #9CA3AF 50%, #D1D5DB 100%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.milestone-card {
+    transition: all 0.3s ease;
+}
+
+.milestone-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Road animation */
+@keyframes roadFlow {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+.road-path::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: roadFlow 3s linear infinite;
+}
+
+/* Milestone number animation */
+.milestone-number {
+    transition: all 0.3s ease;
+}
+
+.milestone-card:hover .milestone-number {
+    transform: scale(1.1);
+}
+
+/* Stats counter animation */
+.stat-number {
+    transition: all 0.6s ease;
+}
+
+/* Responsive adjustments for journey page */
+@media (max-width: 768px) {
+    .journey-milestone {
+        transform: translateX(-20px);
+    }
+    
+    .journey-milestone.visible {
+        transform: translateX(0);
+    }
+}
