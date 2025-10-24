@@ -325,6 +325,53 @@ a:focus {
     transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+/* Scroll button styles - Mobile only */
+#scroll-left, #scroll-right {
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 30;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    opacity: 0.3;
+}
+
+#scroll-left:hover, #scroll-right:hover,
+#scroll-left:active, #scroll-right:active {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+}
+
+#scroll-container {
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+/* Ensure scroll container starts at leftmost position */
+#scroll-container {
+    scroll-padding-left: 0;
+    scroll-padding-right: 0;
+}
+
+/* Hide scroll buttons on desktop */
+@media (min-width: 768px) {
+    #scroll-left, #scroll-right {
+        display: none !important;
+    }
+}
+
 /* Journey Page Specific Styles */
 .journey-milestone {
     opacity: 0;

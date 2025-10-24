@@ -1,6 +1,71 @@
 // JavaScript for Area website - Modern Minimal Design
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Ensure scroll container starts at the correct position (between left and center)
+    function resetScrollPosition() {
+        const scrollContainer = document.getElementById('scroll-container');
+        if (scrollContainer) {
+            // Start at position 0 to show the first card with its left margin
+            scrollContainer.scrollLeft = 0;
+        }
+    }
+    
+    // Reset scroll position when page loads
+    resetScrollPosition();
+    
+    // Also reset when the visualization section is loaded
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        if (node.querySelector && node.querySelector('#scroll-container')) {
+                            setTimeout(() => {
+                                resetScrollPosition();
+                            }, 100);
+                        }
+                    }
+                });
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    // Horizontal scroll functionality for solutions section (mobile only)
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'scroll-left') {
+            e.preventDefault();
+            const scrollContainer = document.getElementById('scroll-container');
+            if (scrollContainer) {
+                const currentScroll = scrollContainer.scrollLeft;
+                const scrollAmount = 400;
+                const newScroll = Math.max(0, currentScroll - scrollAmount);
+                scrollContainer.scrollTo({
+                    left: newScroll,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        if (e.target && e.target.id === 'scroll-right') {
+            e.preventDefault();
+            const scrollContainer = document.getElementById('scroll-container');
+            if (scrollContainer) {
+                const currentScroll = scrollContainer.scrollLeft;
+                const scrollAmount = 400;
+                const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+                const newScroll = Math.min(maxScroll, currentScroll + scrollAmount);
+                scrollContainer.scrollTo({
+                    left: newScroll,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
     // Mobile menu toggle
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const mobileMenu = document.createElement('div');

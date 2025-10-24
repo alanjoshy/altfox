@@ -1,23 +1,41 @@
 <!-- See the Big Picture Section -->
-<section id="specifications" class="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            <!-- Left Column - Text & Content Block -->
-            <div class="flex flex-col space-y-6 sm:space-y-8 pl-0">
-                <!-- Section Heading -->
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 leading-tight mb-4 font-serif">
-                    Our Solutions
-                </h2>
-                
-                <!-- Description -->
-                <p class="text-base sm:text-lg text-gray-500 leading-relaxed max-w-xl mb-6 sm:mb-8">
-                    AloftX demonstrates its full technology portfolio, becoming a complete 360° partner for growth.
-                </p>
-                
-                <!-- Solutions Categories -->
-                <div class="flex flex-col space-y-6 sm:space-y-8">
+<section id="specifications" class="pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 bg-white">
+    <!-- Section Header with padding -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center py-8 sm:py-12 md:py-16 px-4 sm:px-6 mb-8 sm:mb-12">
+            <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Our Solutions</div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-4 sm:mb-6 font-serif">Technology Portfolio</h2>
+            <p class="text-base sm:text-lg text-gray-500 font-light mb-8 sm:mb-12 max-w-2xl mx-auto">
+                AloftX demonstrates its full technology portfolio, becoming a complete 360° partner for growth.
+            </p>
+            <div class="mb-6 sm:mb-8">
+                <a href="products.html">
+                    <button class="bg-green-600 text-white px-6 sm:px-8 md:px-12 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        Explore Products ↗
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Solutions Categories - Apple Store Style Horizontal Scroll (No padding on desktop) -->
+    <div class="relative mb-8 sm:mb-12">
+            <!-- Scroll Buttons - Mobile Only -->
+            <button id="scroll-left" class="md:hidden absolute left-4 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-3">
+                <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </button>
+            <button id="scroll-right" class="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-3">
+                <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </button>
+            
+            <div id="scroll-container" class="flex overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory scroll-smooth">
+                <div class="flex min-w-max">
                     <!-- POS Solutions -->
-                    <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-4 sm:p-6">
+                    <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 w-72 sm:w-80 md:w-[420px] flex-shrink-0 snap-start ml-4 sm:ml-6 lg:ml-8 mr-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 font-serif">POS Solutions</h3>
                         <div class="space-y-2 sm:space-y-3">
                             <div class="flex items-start space-x-2 sm:space-x-3">
@@ -48,7 +66,7 @@
                     </div>
 
                     <!-- Cloud & AI Solutions -->
-                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-4 sm:p-6">
+                    <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 w-72 sm:w-80 md:w-[420px] flex-shrink-0 snap-start mr-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 font-serif">Cloud & AI Solutions</h3>
                         <div class="space-y-2 sm:space-y-3">
                             <div class="flex items-start space-x-2 sm:space-x-3">
@@ -73,7 +91,7 @@
                     </div>
 
                     <!-- Enterprise Solutions -->
-                    <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-4 sm:p-6">
+                    <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 w-72 sm:w-80 md:w-[420px] flex-shrink-0 snap-start mr-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 font-serif">Enterprise & Industry Solutions</h3>
                         <div class="space-y-2 sm:space-y-3">
                             <div class="flex items-start space-x-2 sm:space-x-3">
@@ -98,7 +116,7 @@
                     </div>
 
                     <!-- Software Support & Development -->
-                    <div class="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-4 sm:p-6">
+                    <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 w-72 sm:w-80 md:w-[420px] flex-shrink-0 snap-start mr-4 sm:mr-6 lg:mr-8">
                         <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 font-serif">Software Support & Development</h3>
                         <p class="text-xs sm:text-sm text-gray-600 mb-3 italic">
                             Purpose: Deliver ongoing software support and develop innovative solutions with next-gen technologies.
@@ -140,62 +158,6 @@
                                 <strong>Message:</strong> AloftX ensures clients stay future-ready with continuous innovation and dependable support.
                             </p>
                         </div>
-                    </div>
-                </div>
-                
-                
-            </div>
-            
-            <!-- Right Column - Technology Solutions Panel -->
-            <div class="flex justify-center lg:justify-start mt-8 sm:mt-12 lg:mt-0">
-                <div class="w-full max-w-sm sm:max-w-md lg:max-w-lg h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
-                    <!-- Technology Solutions Visualization -->
-                    <div class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 flex items-center justify-center">
-                        <!-- POS Terminal -->
-                        <div class="absolute top-4 sm:top-6 md:top-8 left-4 sm:left-6 md:left-8 w-10 h-8 sm:w-12 sm:h-10 md:w-16 md:h-12 bg-white rounded-lg shadow-lg flex items-center justify-center">
-                            <div class="w-8 h-6 sm:w-10 sm:h-7 md:w-12 md:h-8 bg-green-100 rounded flex items-center justify-center">
-                                <span class="text-green-600 text-xs font-bold">POS</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Cloud Icon -->
-                        <div class="absolute top-2 sm:top-3 md:top-4 right-6 sm:right-8 md:right-12 w-8 h-6 sm:w-10 sm:h-7 md:w-12 md:h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-                            <div class="w-6 h-4 sm:w-7 sm:h-5 md:w-8 md:h-5 bg-blue-100 rounded-full flex items-center justify-center">
-                                <span class="text-blue-600 text-xs">☁️</span>
-                            </div>
-                        </div>
-                        
-                        <!-- AI Brain -->
-                        <div class="absolute top-8 sm:top-12 md:top-16 right-2 sm:right-3 md:right-4 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-                            <div class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-purple-100 rounded-full flex items-center justify-center">
-                                <span class="text-purple-600 text-xs">AI</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Database -->
-                        <div class="absolute bottom-8 sm:bottom-12 md:bottom-16 left-2 sm:left-3 md:left-4 w-10 h-7 sm:w-12 sm:h-8 md:w-14 md:h-10 bg-white rounded-lg shadow-lg flex items-center justify-center">
-                            <div class="w-7 h-5 sm:w-8 sm:h-6 md:w-10 md:h-6 bg-orange-100 rounded flex items-center justify-center">
-                                <span class="text-orange-600 text-xs font-bold">DB</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Mobile App -->
-                        <div class="absolute bottom-4 sm:bottom-6 md:bottom-8 right-4 sm:right-6 md:right-8 w-6 h-9 sm:w-7 sm:h-10 md:w-8 md:h-12 bg-white rounded-lg shadow-lg flex items-center justify-center">
-                            <div class="w-4 h-6 sm:w-5 sm:h-7 md:w-6 md:h-8 bg-pink-100 rounded flex items-center justify-center">
-                                <span class="text-pink-600 text-xs">📱</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Central Hub -->
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                            <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-12 lg:h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
-                                <span class="text-white text-xs sm:text-sm font-bold">360°</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Connection Lines -->
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-32 lg:h-32 border-2 border-gray-200 rounded-full opacity-30"></div>
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 sm:w-36 sm:h-36 md:w-48 md:h-48 lg:w-48 lg:h-48 border border-gray-200 rounded-full opacity-20"></div>
                     </div>
                 </div>
             </div>
