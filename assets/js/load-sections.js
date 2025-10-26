@@ -5,7 +5,7 @@ class ComponentLoader {
         this.loadedComponents = new Set();
     }
 
-    async loadComponent(componentPath, targetElement) {
+    async loadComponent(componentPath, targetElement, pathPrefix = '') {
         try {
             if (this.loadedComponents.has(componentPath)) {
                 return;
@@ -23,6 +23,9 @@ class ComponentLoader {
             if (target) {
                 target.innerHTML = html;
                 this.loadedComponents.add(componentPath);
+                
+                // Fix paths in loaded content based on current location
+                this.fixAssetPaths(target, pathPrefix);
             } else {
                 console.error(`Target element not found: ${targetElement}`);
             }
@@ -31,14 +34,55 @@ class ComponentLoader {
         }
     }
 
+    fixAssetPaths(element, pathPrefix) {
+        // Fix image sources
+        const images = element.querySelectorAll('img[src^="assets/"]');
+        images.forEach(img => {
+            const originalSrc = img.getAttribute('src');
+            if (originalSrc && pathPrefix) {
+                img.src = pathPrefix + originalSrc;
+            }
+        });
+        
+        // Fix links
+        const links = element.querySelectorAll('a[href^="#"], a[href*="index.html"], a[href*="pages/products"]');
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                // Hash links should redirect to homepage with hash
+                link.href = (pathPrefix || './') + 'index.html' + href;
+            } else if (href && href.includes('pages/products')) {
+                // Fix products page links
+                if (href === 'pages/products.html') {
+                    link.href = pathPrefix + 'pages/products.html';
+                } else if (href.startsWith('pages/products/')) {
+                    link.href = pathPrefix + href;
+                }
+            }
+        });
+    }
+
     async loadAllComponents() {
+        // Detect current directory level to adjust paths
+        const pathname = window.location.pathname;
+        let pathPrefix = '';
+        
+        if (pathname.includes('/pages/products/')) {
+            // Two levels deep (pages/products/file.html)
+            pathPrefix = '../../';
+        } else if (pathname.includes('/pages/')) {
+            // One level deep (pages/file.html)
+            pathPrefix = '../';
+        }
+        // If at root, pathPrefix remains empty string
+        
         const components = [
-            { path: 'components/navigation.html', target: '#header-placeholder' },
-            { path: 'components/footer.html', target: '#footer-placeholder' }
+            { path: pathPrefix + 'components/navigation.html', target: '#header-placeholder' },
+            { path: pathPrefix + 'components/footer.html', target: '#footer-placeholder' }
         ];
 
         for (const component of components) {
-            await this.loadComponent(component.path, component.target);
+            await this.loadComponent(component.path, component.target, pathPrefix);
         }
     }
 }
@@ -50,19 +94,21 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load header and footer
     await loader.loadAllComponents();
     
-    // Load all sections for homepage.html
+    // Load all sections for homepage
     if (document.body.id === 'homepage') {
         const sections = [
-            { path: 'sections/about-us-section.html', target: '#about-us-placeholder' },
-            { path: 'sections/features-grid.html', target: '#benefits-grid-placeholder' },
-            { path: 'sections/visualization-features.html', target: '#big-picture-placeholder' },
+            { path: 'sections/hero-section.html', target: '#about-us-placeholder' },
+            // Products section removed - users will be redirected to products page instead
+            // { path: 'sections/products-section.html', target: '#products-section-placeholder' },
+            { path: 'sections/industries-section.html', target: '#benefits-grid-placeholder' },
+            { path: 'sections/solutions-section.html', target: '#big-picture-placeholder' },
             { path: 'sections/journey-timeline.html', target: '#journey-timeline-placeholder' },
-            { path: 'sections/mountain-banner.html', target: '#scenic-banner-placeholder' },
+            { path: 'sections/banner-section.html', target: '#scenic-banner-placeholder' },
             { path: 'sections/contact-section.html', target: '#connect-us-placeholder' }
         ];
 
         for (const section of sections) {
-            await loader.loadComponent(section.path, section.target);
+            await loader.loadComponent(section.path, section.target, '');
         }
     }
 });

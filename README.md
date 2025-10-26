@@ -22,17 +22,19 @@ AloftX/
 ├── components/                # Reusable components
 │   ├── navigation.html        # Header navigation
 │   └── footer.html           # Footer
-├── sections/                  # Page sections
-│   ├── about-us-section.html  # About company
-│   ├── visualization-features.html # Solutions
-│   ├── features-grid.html     # Industries
-│   ├── journey-timeline.html  # Timeline
-│   ├── mountain-banner.html   # Banner
-│   └── contact-section.html   # Contact
+├── sections/                  # Page sections (modular)
+│   ├── hero-section.html      # Hero, About & Mission/Vision
+│   ├── solutions-section.html  # Technology Portfolio
+│   ├── industries-section.html # Industries We Serve
+│   ├── journey-timeline.html   # Company Journey/Timeline
+│   ├── banner-section.html    # Banner section
+│   └── contact-section.html   # Contact form & info
+├── products/                   # Product pages
+│   └── smap-counterlens.html  # SMAP product details
 └── assets/                    # Static assets
     ├── logo.ico              # Favicon
-    ├── alotfx.png            # Company image
-    └── js/load-sections.js   # Component loader
+    └── js/
+        └── load-sections.js  # Component loader
 ```
 
 ## 🎯 Features

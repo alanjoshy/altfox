@@ -1,6 +1,33 @@
 // JavaScript for Area website - Modern Minimal Design
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Fix navigation paths based on current page location
+    function fixNavigationPaths() {
+        const isPagesDirectory = window.location.pathname.includes('/pages/');
+        const navLogo = document.getElementById('nav-logo');
+        const navLogoLink = document.getElementById('nav-logo-link');
+        
+        if (navLogo && isPagesDirectory) {
+            navLogo.src = navLogo.src.replace('assets/', '../assets/');
+        }
+        
+        if (navLogoLink && isPagesDirectory) {
+            navLogoLink.href = '../index.html';
+        }
+        
+        // Fix all relative links in navigation
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (isPagesDirectory && href.startsWith('#')) {
+                link.href = '../index.html' + href;
+            }
+        });
+    }
+    
+    // Call immediately
+    fixNavigationPaths();
+    
     // Ensure scroll container starts at the correct position (between left and center)
     function resetScrollPosition() {
         const scrollContainer = document.getElementById('scroll-container');
@@ -66,44 +93,168 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    // Mobile menu toggle
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.createElement('div');
-    mobileMenu.className = 'mobile-menu md:hidden bg-white shadow-lg absolute top-20 left-0 right-0 z-40';
-    mobileMenu.innerHTML = `
-        <div class="px-8 py-4 space-y-2">
-            <a href="#benefits" class="block px-3 py-2 text-gray-600 hover:text-sage-green hover:bg-gray-50 rounded-md nav-link">Benefits</a>
-            <a href="#specifications" class="block px-3 py-2 text-gray-600 hover:text-sage-green hover:bg-gray-50 rounded-md nav-link">Specifications</a>
-            <a href="#how-to" class="block px-3 py-2 text-gray-600 hover:text-sage-green hover:bg-gray-50 rounded-md nav-link">How-to</a>
-            <a href="#contact" class="block px-3 py-2 text-gray-600 hover:text-sage-green hover:bg-gray-50 rounded-md nav-link">Contact Us</a>
-        </div>
-    `;
-    
-    // Insert mobile menu after navigation
-    const nav = document.querySelector('nav');
-    if (nav && nav.parentNode) {
-        nav.parentNode.insertBefore(mobileMenu, nav.nextSibling);
-    }
-    
-    // Toggle mobile menu
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
+    // Mobile menu toggle - Use event delegation to handle dynamically loaded content
+    function setupMobileMenu() {
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        
+        if (!mobileMenuButton) {
+            return; // Button not loaded yet
+        }
+        
+        // Check if mobile menu already exists
+        let mobileMenu = document.querySelector('.mobile-menu');
+
+        let overlay = document.querySelector('.mobile-menu-overlay');
+        
+        if (!mobileMenu || !overlay) {
+            // Determine the correct paths based on current page
+            const pathname = window.location.pathname;
+            const isInPages = pathname.includes('/pages/');
+            
+            // Calculate correct prefix based on directory depth
+            let pathPrefix = '';
+            if (pathname.includes('/pages/products/')) {
+                // Two levels deep (pages/products/*)
+                pathPrefix = '../../';
+            } else if (pathname.includes('/pages/')) {
+                // One level deep (pages/*)
+                pathPrefix = '../';
+            }
+            
+            const indexPath = pathPrefix + 'index.html';
+            const productsPage = pathPrefix + 'pages/products.html';
+            
+            // Create overlay
+            overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+            
+            // Create mobile menu
+            mobileMenu = document.createElement('div');
+            mobileMenu.className = 'mobile-menu';
+            mobileMenu.innerHTML = `
+                <div class="mobile-menu-header">
+                    <h3 class="text-lg font-semibold text-gray-900">Menu</h3>
+                    <button class="mobile-menu-close">✕</button>
+                </div>
+                <div class="mobile-menu-content">
+                    <a href="${isInPages ? indexPath + '#about' : '#about'}" class="nav-link">About Us</a>
+                    
+                    <!-- Products with subcategories -->
+                    <div class="mobile-menu-section">
+                        <div class="mobile-menu-section-header" onclick="toggleMobileSection(this)">
+                            <a href="${productsPage}" class="nav-link mobile-menu-main-link">Products</a>
+                        </div>
+                        <div class="mobile-menu-submenu">
+                            <a href="${pathPrefix}pages/products/smap-counterlens.html" class="mobile-menu-sublink">SMAP Counterlens</a>
+                            <a href="${pathPrefix}pages/products/gbs-pos.html" class="mobile-menu-sublink">GBS POS</a>
+                            <a href="${productsPage}" class="mobile-menu-view-all">View All Products →</a>
+                        </div>
+                    </div>
+                    
+                    <a href="${isInPages ? indexPath + '#industries' : '#industries'}" class="nav-link">Industries</a>
+                    <a href="${isInPages ? indexPath + '#specifications' : '#specifications'}" class="nav-link">Solutions</a>
+                    <a href="${isInPages ? indexPath + '#journey' : '#journey'}" class="nav-link">Our Journey</a>
+                    <a href="${isInPages ? indexPath + '#contact' : '#contact'}" class="nav-link">Contact Us</a>
+                </div>
+            `;
+            
+            // Add to body
+            document.body.appendChild(overlay);
+            document.body.appendChild(mobileMenu);
+        }
+        
+        // Get existing menu and overlay if they exist
+        mobileMenu = document.querySelector('.mobile-menu');
+        overlay = document.querySelector('.mobile-menu-overlay');
+        
+        // Remove existing listeners and add new ones
+        mobileMenuButton.replaceWith(mobileMenuButton.cloneNode(true));
+        const newButton = document.querySelector('.mobile-menu-button');
+        
+        // Function to open menu
+        function openMobileMenu() {
+            if (overlay) overlay.classList.add('active');
+            if (mobileMenu) mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Function to close menu
+        function closeMobileMenu() {
+            if (overlay) overlay.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Button click handler
+        newButton.addEventListener('click', openMobileMenu);
+        
+        // Close button handler
+        const closeButton = mobileMenu.querySelector('.mobile-menu-close');
+        if (closeButton) {
+            closeButton.addEventListener('click', closeMobileMenu);
+        }
+        
+        // Overlay click handler
+        if (overlay) {
+            overlay.addEventListener('click', closeMobileMenu);
+        }
+        
+        // Close mobile menu when clicking on a link
+        const menuLinks = mobileMenu.querySelectorAll('.mobile-menu-content a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Delay closing to allow navigation
+                setTimeout(closeMobileMenu, 100);
+            });
+        });
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
         });
     }
     
-    // Close mobile menu when clicking on a link
-    mobileMenu.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-            mobileMenu.classList.remove('active');
+    // Toggle mobile menu section (for expandable menus like Products)
+    window.toggleMobileSection = function(header) {
+        const section = header.closest('.mobile-menu-section');
+        const submenu = section.querySelector('.mobile-menu-submenu');
+        
+        if (submenu.style.display === 'block') {
+            submenu.style.display = 'none';
+            section.classList.remove('expanded');
+        } else {
+            submenu.style.display = 'block';
+            section.classList.add('expanded');
         }
-    });
+    };
+    
+    // Try to setup mobile menu immediately
+    setupMobileMenu();
+    
+    // Also setup after a short delay to handle async component loading
+    setTimeout(setupMobileMenu, 500);
+    
+    // Also fix paths after navigation loads
+    setTimeout(fixNavigationPaths, 600);
     
     // Enhanced smooth scrolling for navigation links with transition effects
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            
+            // Check if we're on the homepage or another page
+            const isHomepage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+            
+            if (!isHomepage && href.startsWith('#')) {
+                // Redirect to homepage with hash
+                window.location.href = '../index.html' + href;
+                return;
+            }
+            
+            const target = document.querySelector(href);
             if (target) {
                 // Add loading effect to clicked link
                 this.style.opacity = '0.7';
@@ -139,30 +290,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll effect to navigation
     window.addEventListener('scroll', function() {
         const nav = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
+        if (nav) {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         }
     });
     
-    // Enhanced Intersection Observer for section transitions
+    // Enhanced Intersection Observer for section transitions and active nav link highlighting
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.1,  // Reduced from 0.3 to trigger earlier
+        rootMargin: '0px 0px -100px 0px'  // Increased visibility area
     };
     
     const sectionObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Add fade-in animation
-                entry.target.classList.add('fade-in-up');
+                const section = entry.target;
                 
-                // Add section-specific animations
-                const sectionId = entry.target.id;
-                if (sectionId) {
-                    // Add staggered animation for child elements
-                    const children = entry.target.querySelectorAll('.group, .milestone-card, .bg-gradient-to-r');
+                // Only add revealed class once to prevent double animation
+                if (!section.classList.contains('revealed')) {
+                    // Add section-reveal animation class if not already present
+                    section.classList.add('section-reveal');
+                    
+                    // Trigger reveal animation faster for quicker visibility
+                    setTimeout(() => {
+                        section.classList.add('revealed');
+                    }, 50);
+                    
+                    // Add section-specific animations for children
+                    const children = section.querySelectorAll('.group, .milestone-card, .bg-gradient-to-r, .product-card');
                     children.forEach((child, index) => {
                         setTimeout(() => {
                             child.style.opacity = '0';
@@ -176,14 +335,71 @@ document.addEventListener('DOMContentLoaded', function() {
                         }, index * 100);
                     });
                 }
+                
+                // Update active navigation link (this happens every time section is visible)
+                const sectionId = section.id;
+                if (sectionId) {
+                    updateActiveNavLink(sectionId);
+                }
             }
         });
     }, observerOptions);
     
-    // Observe all sections for animation
-    document.querySelectorAll('section').forEach(section => {
-        sectionObserver.observe(section);
-    });
+    // Function to update active navigation link
+    function updateActiveNavLink(activeSectionId) {
+        // Remove active class from all nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        // Add active class to the corresponding nav link
+        const activeLink = document.querySelector(`a[href="#${activeSectionId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
+    
+    // Observe all sections for animation and active link highlighting
+    function observeAllSections() {
+        document.querySelectorAll('section[id]').forEach(section => {
+            // Add section-reveal class to make sections invisible initially
+            section.classList.add('section-reveal');
+            sectionObserver.observe(section);
+        });
+        
+        // Also observe sections that are loaded dynamically
+        setTimeout(() => {
+            document.querySelectorAll('section[id]').forEach(section => {
+                // Add section-reveal class to dynamically loaded sections
+                section.classList.add('section-reveal');
+                if (!sectionObserver.observedSections || !sectionObserver.observedSections.has(section)) {
+                    sectionObserver.observe(section);
+                }
+            });
+        }, 1000);
+    }
+    
+    // Start observing immediately
+    observeAllSections();
+    
+    // Re-observe after dynamic content loads
+    setTimeout(observeAllSections, 1500);
+    
+    // Set initial active link based on scroll position
+    setTimeout(() => {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.scrollY + 150;
+        
+        for (let i = sections.length - 1; i >= 0; i--) {
+            const section = sections[i];
+            const sectionTop = section.offsetTop;
+            
+            if (scrollPosition >= sectionTop) {
+                updateActiveNavLink(section.id);
+                break;
+            }
+        }
+    }, 2000);
     
     // Add scroll progress indicator
     function updateScrollProgress() {
@@ -242,7 +458,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add keyboard navigation support
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            mobileMenu.classList.remove('active');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.remove('active');
+            }
         }
     });
     

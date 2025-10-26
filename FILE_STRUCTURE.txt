@@ -1,0 +1,54 @@
+AloftX Website File Structure
+========================================
+
+📦 ROOT DIRECTORY
+├── 📄 index.html                    (Homepage)
+├── 📄 pages/products.html           (Products listing page)
+├── 📄 script.js                     (Main JavaScript)
+├── 📄 styles.css                    (Global styles)
+├── 📄 README.md                     (Project readme)
+├── 📄 STRUCTURE.md                  (Complete structure docs)
+└── 📄 QUICK_START.md                (Quick reference)
+
+📁 assets/                           (Static assets)
+├── 📁 js/
+│   └── load-sections.js            (Dynamic component loader)
+└── logo.ico                        (Site favicon)
+
+📁 components/                       (Reusable HTML components)
+├── footer.html                     (Footer component)
+└── navigation.html                 (Navigation bar)
+
+📁 pages/                            (Main website pages)
+└── 📁 products/                     (Individual product pages)
+    └── smap-counterlens.html       (SMAP product detail)
+
+📁 sections/                         (Section components)
+├── banner-section.html
+├── contact-section.html
+├── hero-section.html
+├── industries-section.html
+├── journey-timeline.html
+└── solutions-section.html
+
+========================================
+KEY PATHS & RELATIONSHIPS
+========================================
+
+From index.html (Root):
+  → components/navigation.html
+  → styles.css
+  → script.js
+
+From pages/products.html:
+  → ../components/navigation.html
+  → ../styles.css
+  → ../script.js
+  → products/smap-counterlens.html
+
+From pages/products/*.html:
+  → ../../components/navigation.html
+  → ../../styles.css
+  → ../../script.js
+
+========================================
