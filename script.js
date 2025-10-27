@@ -643,31 +643,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle form submission
+    // Handle form submission with Web3Forms
     document.addEventListener('submit', function(e) {
         if (e.target && e.target.id === 'contact-form') {
             e.preventDefault();
             
-            const formData = new FormData(e.target);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
+            const form = e.target;
+            const formData = new FormData(form);
             const submitBtn = document.getElementById('submit-btn');
+            
             if (submitBtn) {
+                const originalContent = submitBtn.innerHTML;
                 submitBtn.innerHTML = '<span class="loading"></span> Sending...';
                 submitBtn.disabled = true;
                 
-                        // Simulate form submission
-                        setTimeout(() => {
-                            alert(`Thank you, ${name}! Your message has been sent successfully. We'll get back to you soon at ${email}.`);
-                            
-                            // Close modal with animation
-                            closeModal();
-                            
-                            submitBtn.innerHTML = 'Send Message';
-                            submitBtn.disabled = false;
-                        }, 2000);
+                // Submit to Web3Forms
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Success message
+                        alert('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+                        
+                        // Close modal with animation
+                        closeModal();
+                        
+                        // Reset form
+                        form.reset();
+                    } else {
+                        throw new Error(data.message || 'Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Sorry, there was an error sending your message. Please try again or email us directly at info@aloftx.com');
+                })
+                .finally(() => {
+                    // Reset button
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                });
             }
         }
     });
@@ -815,4 +833,53 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         }, 3000);
     }
-});
+
+    // Carousel functionality - moved inside main DOMContentLoaded
+    function initCarousel() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        
+        if (totalSlides === 0) return;
+        
+        let currentSlide = 0;
+        
+        // Show specific slide
+        function showSlide(n) {
+            // Handle wrap-around
+            if (n >= totalSlides) {
+                currentSlide = 0;
+            } else if (n < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = n;
+            }
+            
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Show current slide
+            if (slides[currentSlide]) {
+                slides[currentSlide].classList.add('active');
+            }
+        }
+        
+        // Next slide function
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        // Start auto-play
+        setInterval(() => {
+            if (document.visibilityState === 'visible') {
+                nextSlide();
+            }
+        }, 4000); // Change slide every 4 seconds
+    }
+    
+    // Initialize carousel after a short delay to ensure DOM is ready
+    setTimeout(() => {
+        initCarousel();
+    }, 500);
+    
+}); // End of main DOMContentLoaded

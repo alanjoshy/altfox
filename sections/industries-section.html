@@ -13,13 +13,17 @@
         <!-- Industries Grid - 2x2 Layout -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
             <!-- Retail & Restaurants -->
-            <div class="group relative flex flex-col space-y-4 text-left p-6 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <div class="w-8 h-8 mb-4">
-                    <svg class="w-8 h-8 text-gray-600 group-hover:text-green-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                    </svg>
+            <div class="group relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer p-4 sm:p-6">
+                <div class="relative h-[180px] sm:h-[200px] rounded-xl overflow-hidden mb-4">
+                    <img 
+                        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80" 
+                        alt="Retail Store"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">Retail & Restaurants</h3>
+                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300 mb-2">Retail & Restaurants</h3>
                 <p class="text-gray-500 text-sm sm:text-base leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                     POS, billing, stock management solutions tailored for retail stores and restaurant operations.
                 </p>
@@ -28,13 +32,17 @@
             </div>
 
             <!-- Hospitality -->
-            <div class="group relative flex flex-col space-y-4 text-left p-6 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <div class="w-8 h-8 mb-4">
-                    <svg class="w-8 h-8 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                    </svg>
+            <div class="group relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer p-4 sm:p-6">
+                <div class="relative h-[180px] sm:h-[200px] rounded-xl overflow-hidden mb-4">
+                    <img 
+                        src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" 
+                        alt="Hotel Lobby"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Hospitality</h3>
+                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 mb-2">Hospitality</h3>
                 <p class="text-gray-500 text-sm sm:text-base leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                     Hotels, bookings, guest management systems for seamless hospitality operations.
                 </p>
@@ -43,13 +51,17 @@
             </div>
 
             <!-- Healthcare -->
-            <div class="group relative flex flex-col space-y-4 text-left p-6 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <div class="w-8 h-8 mb-4">
-                    <svg class="w-8 h-8 text-gray-600 group-hover:text-red-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                    </svg>
+            <div class="group relative flex flex-col space-y-4 text-left overflow-hidden rounded-xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                <div class="relative h-[180px] sm:h-[200px] rounded-xl overflow-hidden mb-2">
+                    <img 
+                        src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" 
+                        alt="Hospital Interior"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-red-600 transition-colors duration-300">Healthcare</h3>
+                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-red-600 transition-colors duration-300 px-2">Healthcare</h3>
                 <p class="text-gray-500 text-sm sm:text-base leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                     Hospitals, clinics, patient systems for comprehensive healthcare management.
                 </p>
@@ -58,13 +70,17 @@
             </div>
 
             <!-- Startups & Enterprises -->
-            <div class="group relative flex flex-col space-y-4 text-left p-6 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:-translate-y-2 cursor-pointer">
-                <div class="w-8 h-8 mb-4">
-                    <svg class="w-8 h-8 text-gray-600 group-hover:text-purple-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                    </svg>
+            <div class="group relative flex flex-col space-y-4 text-left overflow-hidden rounded-xl transition-all duration-300 hover:bg-white hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                <div class="relative h-[180px] sm:h-[200px] rounded-xl overflow-hidden mb-2">
+                    <img 
+                        src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" 
+                        alt="Modern Office"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">Startups & Enterprises</h3>
+                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 group-hover:text-purple-600 transition-colors duration-300 px-2">Startups & Enterprises</h3>
                 <p class="text-gray-500 text-sm sm:text-base leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                     Scalable SaaS, cloud, AI solutions for businesses of all sizes.
                 </p>

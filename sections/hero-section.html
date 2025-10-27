@@ -9,26 +9,65 @@
     </div>
 </section>
 
-<!-- Green Scenic Banner -->
+<!-- Auto-Scrolling Hero Banner Carousel -->
 <section class="py-8 sm:py-12 bg-white">
-    <div class="w-full">
-        <div class="w-full h-[300px] sm:h-[350px] md:h-[400px] rounded-3xl shadow-lg overflow-hidden">
-            <div class="w-full h-full bg-gradient-to-br from-green-400 via-green-500 to-green-600 relative">
-                <!-- Mountain landscape simulation -->
-                <div class="absolute bottom-0 left-0 w-full h-3/4 bg-gradient-to-t from-green-600 to-green-500 rounded-t-full"></div>
-                <div class="absolute bottom-0 left-1/4 w-3/4 h-2/3 bg-gradient-to-t from-green-700 to-green-600 rounded-t-full"></div>
-                <div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-t from-green-800 to-green-700 rounded-t-full"></div>
-                <div class="absolute bottom-0 right-1/3 w-1/3 h-1/3 bg-gradient-to-t from-green-900 to-green-800 rounded-t-full"></div>
+    <div class="w-full px-4">
+        <div class="w-full h-[300px] sm:h-[350px] md:h-[400px] rounded-3xl shadow-lg overflow-hidden relative">
+            <!-- Carousel Container -->
+            <div class="carousel-container relative w-full h-full">
+                <!-- Slide 1 - Business Analytics -->
+                <div class="carousel-slide active">
+                    <img 
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80" 
+                        alt="Business technology and analytics dashboard"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
                 
-                <!-- Snow patches -->
-                <div class="absolute top-1/4 left-1/3 w-12 h-6 sm:w-16 sm:h-8 bg-white rounded-full opacity-80"></div>
-                <div class="absolute top-1/3 right-1/4 w-10 h-5 sm:w-12 sm:h-6 bg-white rounded-full opacity-70"></div>
-                <div class="absolute top-1/2 left-1/2 w-6 h-3 sm:w-8 sm:h-4 bg-white rounded-full opacity-60"></div>
+                <!-- Slide 2 - POS System -->
+                <div class="carousel-slide">
+                    <img 
+                        src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1920&q=80" 
+                        alt="POS System and transaction monitoring"
+                        class="w-full h-full object-cover"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
                 
-                <!-- Clouds -->
-                <div class="absolute top-8 left-8 w-12 h-6 sm:w-16 sm:h-8 bg-white rounded-full opacity-80"></div>
-                <div class="absolute top-12 right-12 w-16 h-5 sm:w-20 sm:h-6 bg-white rounded-full opacity-70"></div>
+                <!-- Slide 3 - Team Collaboration -->
+                <div class="carousel-slide">
+                    <img 
+                        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=80" 
+                        alt="Team collaboration and technology solutions"
+                        class="w-full h-full object-cover"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                
+                <!-- Slide 4 - Innovation & Growth -->
+                <div class="carousel-slide">
+                    <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80" 
+                        alt="Data analytics and business growth"
+                        class="w-full h-full object-cover"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                
+                <!-- Slide 5 - Cloud Technology -->
+                <div class="carousel-slide">
+                    <img 
+                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" 
+                        alt="Cloud technology and AI solutions"
+                        class="w-full h-full object-cover"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
             </div>
+            
+
         </div>
     </div>
 </section>
@@ -46,10 +85,16 @@
 
 <!-- Mission & Vision Section -->
 <section class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <!-- Mission -->
-            <div class="space-y-8">
+            <div class="space-y-6 lg:space-y-8">
+                <img 
+                    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" 
+                    alt="Team working together"
+                    class="w-full h-[200px] sm:h-[250px] lg:h-[300px] object-cover rounded-2xl shadow-lg"
+                    loading="lazy"
+                />
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                         <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,7 +123,13 @@
             </div>
 
             <!-- Vision -->
-            <div class="space-y-8">
+            <div class="space-y-6 lg:space-y-8">
+                <img 
+                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" 
+                    alt="Future technology and innovation"
+                    class="w-full h-[200px] sm:h-[250px] lg:h-[300px] object-cover rounded-2xl shadow-lg"
+                    loading="lazy"
+                />
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                         <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
