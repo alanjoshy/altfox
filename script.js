@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="mobile-menu-submenu">
                             <a href="${pathPrefix}pages/products/smap-counterlens.html" class="mobile-menu-sublink">SMAP Counterlens</a>
-                            <a href="${pathPrefix}pages/products/gbs-pos.html" class="mobile-menu-sublink">GBS POS</a>
+                            <a href="${pathPrefix}pages/products/gbs-pos.html" class="mobile-menu-sublink">AloftX POS</a>
                             <a href="${productsPage}" class="mobile-menu-view-all">View All Products →</a>
                         </div>
                     </div>

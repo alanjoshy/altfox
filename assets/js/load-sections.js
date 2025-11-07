@@ -51,6 +51,11 @@ class ComponentLoader {
             if (href && href.startsWith('#')) {
                 // Hash links should redirect to homepage with hash
                 link.href = (pathPrefix || './') + 'index.html' + href;
+            } else if (href && href.includes('index.html')) {
+                // Normalize any direct references to index.html (with or without hash)
+                const hashIndex = href.indexOf('#');
+                const hash = hashIndex !== -1 ? href.slice(hashIndex) : '';
+                link.href = pathPrefix + 'index.html' + hash;
             } else if (href && href.includes('pages/products')) {
                 // Fix products page links
                 if (href === 'pages/products.html') {

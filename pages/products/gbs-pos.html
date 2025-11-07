@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GBS POS - AloftX Products</title>
+    <title>AloftX POS - AloftX Products</title>
     <link rel="icon" type="image/x-icon" href="../../assets/logo.ico">
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/logo.ico">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +17,7 @@
     <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
-    <section class="pt-24 pb-16 bg-white">
+    <section id="product-hero" class="pt-24 pb-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <div class="inline-block bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -37,7 +37,7 @@
             <div class="rounded-3xl overflow-hidden shadow-2xl">
                 <img 
                     src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80" 
-                    alt="GBS POS System Dashboard"
+                    alt="AloftX POS System Dashboard"
                     class="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
                     loading="eager"
                 />
@@ -46,7 +46,7 @@
     </section>
 
     <!-- Overview Section -->
-    <section class="py-16 bg-white">
+    <section id="product-overview" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Overview</div>
@@ -58,7 +58,7 @@
                 </p>
             </div>
 
-            <div class="bg-gradient-to-br from-blue-50 to-green-50 rounded-3xl p-8 sm:p-12">
+            <div class="bg-gradient-to-br from-blue-50 to-green-50 rounded-3xl p-8 sm:p-12 product-card">
                 <p class="text-lg text-gray-700 text-center leading-relaxed">
                     The system ensures every transaction is secure and verifiable, providing comprehensive monitoring and fraud prevention capabilities that build trust with both business owners and customers.
                 </p>
@@ -66,8 +66,61 @@
         </div>
     </section>
 
+    <!-- Detailed Analysis Section -->
+    <section id="product-analysis" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Detailed Analysis</div>
+                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">
+                    Transaction Journey Breakdown
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Understand how AloftX POS orchestrates every touchpoint—from basket build to audit trail—to deliver resilient retail operations.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 product-card">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Checkout Performance</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
+                        <li>• Optimized UI reduces average tender time per customer.</li>
+                        <li>• Offline-first caching keeps queues moving during outages.</li>
+                        <li>• Dynamic pricing rules sync from headquarters in minutes.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 product-card">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Fraud Controls</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
+                        <li>• Void and refund thresholds enforce manager approval.</li>
+                        <li>• Surveillance linkage gives instant visual context per receipt.</li>
+                        <li>• Audit-ready exports align with PCI and local tax mandates.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 product-card">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Staff Enablement</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
+                        <li>• Guided workflows standardize cash management tasks.</li>
+                        <li>• Role-based dashboards highlight priority actions by shift.</li>
+                        <li>• Embedded tips accelerate onboarding for new associates.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 product-card">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Deployment Snapshot</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
+                        <li>• Modular hardware kits scale from kiosks to multi-lane stores.</li>
+                        <li>• Cloud analytics mirror on-prem transaction archives.</li>
+                        <li>• REST APIs simplify ERP, CRM, and loyalty integrations.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Key Features Section -->
-    <section class="py-16 bg-white">
+    <section id="product-features" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Key Features</div>
@@ -78,7 +131,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500 product-card">
                     <div class="mb-4">
                         <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -89,7 +142,7 @@
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-green-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-green-500 product-card">
                     <div class="mb-4">
                         <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -100,7 +153,7 @@
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-red-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-red-500 product-card">
                     <div class="mb-4">
                         <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -111,7 +164,7 @@
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-purple-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-purple-500 product-card">
                     <div class="mb-4">
                         <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
@@ -122,7 +175,7 @@
                 </div>
 
                 <!-- Feature 5 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-indigo-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-indigo-500 product-card">
                     <div class="mb-4">
                         <svg class="w-12 h-12 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -136,7 +189,7 @@
     </section>
 
     <!-- Benefits Section -->
-    <section class="py-16 bg-gray-50">
+    <section id="product-benefits" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Benefits</div>
@@ -146,23 +199,23 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white rounded-xl p-6 shadow-md">
+                <div class="bg-white rounded-xl p-6 shadow-md product-card">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Enhanced Fraud Prevention</h3>
                     <p class="text-gray-600 text-sm">Multi-layered detection reduces theft risk significantly.</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
+                <div class="bg-white rounded-xl p-6 shadow-md product-card">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Operational Transparency</h3>
                     <p class="text-gray-600 text-sm">Builds customer trust through complete visibility.</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
+                <div class="bg-white rounded-xl p-6 shadow-md product-card">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Real-Time Decision-Making</h3>
                     <p class="text-gray-600 text-sm">Instant alerts enable quick response to issues.</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
+                <div class="bg-white rounded-xl p-6 shadow-md product-card">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Scalable Integration</h3>
                     <p class="text-gray-600 text-sm">Works seamlessly with existing POS setups.</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
+                <div class="bg-white rounded-xl p-6 shadow-md product-card">
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Secure Archival</h3>
                     <p class="text-gray-600 text-sm">Data safely stored for compliance and investigations.</p>
                 </div>
@@ -171,12 +224,12 @@
     </section>
 
     <!-- POS Functions Section -->
-    <section class="py-16 bg-white">
+    <section id="product-workflows" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">User Manual</div>
                 <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">
-                    GBS POS / Transaction System
+                    AloftX POS / Transaction System
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
                     A comprehensive guide to understanding and operating the GBS Point of Sale and Transaction Management interface.
@@ -184,7 +237,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-green-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -198,7 +251,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-blue-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -212,7 +265,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-yellow-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -226,7 +279,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-purple-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -240,7 +293,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-indigo-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,7 +307,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-pink-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -268,7 +321,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-red-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -282,7 +335,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-teal-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -296,7 +349,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-orange-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -310,7 +363,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100">
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-gray-100 product-card">
                     <div class="flex items-start">
                         <div class="bg-cyan-100 p-2 rounded-lg mr-4">
                             <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -328,16 +381,16 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-white">
+    <section id="product-cta" class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gray-50 rounded-3xl p-12 shadow-lg border border-gray-200">
+            <div class="bg-gray-50 rounded-3xl p-12 shadow-lg border border-gray-200 product-card">
                 <div class="text-center">
                     <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Get Started</div>
                     <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6 font-serif">
                         Ready to Secure Your Transactions?
                     </h2>
                     <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-                        Experience the power of intelligent surveillance with GBS POS. Get complete transparency and security for your retail operations.
+                        Experience the power of intelligent surveillance with AloftX POS. Get complete transparency and security for your retail operations.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
                         <a href="../../index.html#contact" class="bg-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-green-600 hover:border-green-600">

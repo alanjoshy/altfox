@@ -17,7 +17,7 @@
     <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
-    <section class="pt-24 pb-16 bg-white">
+    <section id="product-hero" class="pt-24 pb-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="inline-block bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -37,7 +37,7 @@
     </section>
 
     <!-- Observations Section -->
-    <section class="py-16 bg-white">
+    <section id="product-observations" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Observations</div>
@@ -48,7 +48,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- Observation 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-green-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-green-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="text-3xl font-bold text-green-600 mr-3">01</div>
                         <h3 class="text-xl font-semibold text-gray-900">Live Reflection of Activities</h3>
@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- Observation 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="text-3xl font-bold text-blue-600 mr-3">02</div>
                         <h3 class="text-xl font-semibold text-gray-900">Automated Greetings</h3>
@@ -69,7 +69,7 @@
                 </div>
 
                 <!-- Observation 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-red-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-red-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="text-3xl font-bold text-red-600 mr-3">03</div>
                         <h3 class="text-xl font-semibold text-gray-900">Fraud Detection</h3>
@@ -81,7 +81,7 @@
                 </div>
 
                 <!-- Observation 4 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-yellow-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-yellow-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="text-3xl font-bold text-yellow-600 mr-3">04</div>
                         <h3 class="text-xl font-semibold text-gray-900">Smart Incident Detection</h3>
@@ -93,7 +93,7 @@
                 </div>
 
                 <!-- Observation 5 -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-purple-500">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-purple-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="text-3xl font-bold text-purple-600 mr-3">05</div>
                         <h3 class="text-xl font-semibold text-gray-900">Video Data Storage</h3>
@@ -105,7 +105,7 @@
                 </div>
 
                 <!-- Overview Card -->
-                <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 shadow-lg border border-green-200">
+                <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 shadow-lg border border-green-200 product-card">
                     <h3 class="text-xl font-semibold text-gray-900 mb-4">Overview</h3>
                     <p class="text-gray-700 text-sm leading-relaxed">The video showcases an integrated surveillance and POS monitoring system designed for enhanced transaction transparency and security in a retail or service environment. The system combines real-time video feedback, automated alerts, and secure data logging to ensure accountability and owner awareness.</p>
                 </div>
@@ -113,8 +113,61 @@
         </div>
     </section>
 
+    <!-- Detailed Analysis Section -->
+    <section id="product-analysis" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Detailed Analysis</div>
+                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">
+                    Counterlens Intelligence Stack
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Break down the layers that keep SMAP Counterlens responsive, auditable, and tuned to front-of-house realities.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 product-card">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Surveillance Coverage</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
+                        <li>• Dual-camera layout preserves both cashier posture and POS screens.</li>
+                        <li>• Adaptive exposure maintains clarity in mixed lighting environments.</li>
+                        <li>• Frame hashing ensures footage cannot be tampered retroactively.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 product-card">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">AI Detection Models</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
+                        <li>• Motion vectors isolate irregular gestures at key transactional steps.</li>
+                        <li>• NLP parsing of receipts flags unusual product void patterns.</li>
+                        <li>• Continuous learning upgrades trigger thresholds without downtime.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 product-card">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Compliance & Audit</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
+                        <li>• Tamper-evident logs align with regional data residency laws.</li>
+                        <li>• Smart redaction masks customer PII while retaining context.</li>
+                        <li>• Automated evidence packets streamline insurance claims.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 product-card">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Owner Experience</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
+                        <li>• Mobile push alerts include annotated stills for rapid triage.</li>
+                        <li>• Multi-store command center compares KPIs across locations.</li>
+                        <li>• Role-based insights share only the footage each team needs.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Product Overview Section -->
-    <section class="py-16 bg-white">
+    <section id="product-overview" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <!-- Left Column - Product Image/Visual -->
@@ -192,7 +245,7 @@
     </section>
 
     <!-- System Capabilities Section -->
-    <section class="py-16 bg-white">
+    <section id="product-capabilities" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Capabilities</div>
@@ -206,7 +259,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Camera Reflection -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow product-card">
                     <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -217,7 +270,7 @@
                 </div>
 
                 <!-- Voice Greeting -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow product-card">
                     <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
@@ -228,7 +281,7 @@
                 </div>
 
                 <!-- Transaction Flagging -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow product-card">
                     <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -239,7 +292,7 @@
                 </div>
 
                 <!-- Alert System -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow product-card">
                     <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4.828 7l2.586 2.586a2 2 0 002.828 0L12.828 7H4.828z"></path>
@@ -250,7 +303,7 @@
                 </div>
 
                 <!-- Storage -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow product-card">
                     <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
@@ -261,7 +314,7 @@
                 </div>
 
                 <!-- Real-Time Monitoring -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow product-card">
                     <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -275,7 +328,7 @@
     </section>
 
     <!-- Real-Time Event Alerts Section -->
-    <section class="py-16 bg-white">
+    <section id="product-alerts" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Alerts</div>
@@ -289,7 +342,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Alert 1 -->
-                <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-8 border-l-4 border-red-500">
+                <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl p-8 border-l-4 border-red-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -302,7 +355,7 @@
                 </div>
 
                 <!-- Alert 2 -->
-                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-8 border-l-4 border-orange-500">
+                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-8 border-l-4 border-orange-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -315,7 +368,7 @@
                 </div>
 
                 <!-- Alert 3 -->
-                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border-l-4 border-blue-500">
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border-l-4 border-blue-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -328,7 +381,7 @@
                 </div>
 
                 <!-- Alert 4 -->
-                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-l-4 border-green-500">
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-l-4 border-green-500 product-card">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
                             <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -344,7 +397,7 @@
     </section>
 
     <!-- System Flowchart Section -->
-    <section class="py-16 bg-white">
+    <section id="product-flow" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Flowchart</div>
@@ -356,7 +409,7 @@
                 </p>
             </div>
 
-            <div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100">
+            <div class="bg-gray-50 rounded-3xl p-8 shadow-lg border border-gray-100 product-card">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Step 1 -->
                     <div class="text-center">
@@ -399,9 +452,9 @@
     </section>
 
     <!-- Conclusion Section -->
-    <section class="py-16 bg-white">
+    <section id="product-conclusion" class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gray-50 rounded-3xl p-12 shadow-lg border border-gray-200">
+            <div class="bg-gray-50 rounded-3xl p-12 shadow-lg border border-gray-200 product-card">
                 <div class="text-center mb-8">
                     <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Conclusion</div>
                     <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6 font-serif">
@@ -416,9 +469,9 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-white">
+    <section id="product-cta" class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gray-50 rounded-3xl p-12 shadow-lg border border-gray-200">
+            <div class="bg-gray-50 rounded-3xl p-12 shadow-lg border border-gray-200 product-card">
                 <div class="text-center">
                     <div class="text-sm font-medium text-green-600 uppercase tracking-widest mb-4">Get Started</div>
                     <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6 font-serif">
