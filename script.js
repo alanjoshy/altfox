@@ -3,24 +3,31 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Fix navigation paths based on current page location
     function fixNavigationPaths() {
-        const isPagesDirectory = window.location.pathname.includes('/pages/');
+        const pathname = window.location.pathname;
         const navLogo = document.getElementById('nav-logo');
         const navLogoLink = document.getElementById('nav-logo-link');
-        
-        if (navLogo && isPagesDirectory) {
-            navLogo.src = navLogo.src.replace('assets/', '../assets/');
+
+        let pathPrefix = '';
+        if (pathname.includes('/pages/products/')) {
+            pathPrefix = '../../';
+        } else if (pathname.includes('/pages/')) {
+            pathPrefix = '../';
         }
         
-        if (navLogoLink && isPagesDirectory) {
-            navLogoLink.href = '../index.html';
+        if (navLogo) {
+            navLogo.src = `${pathPrefix}assets/logo.ico`;
+        }
+        
+        if (navLogoLink) {
+            navLogoLink.href = `${pathPrefix}index.html`;
         }
         
         // Fix all relative links in navigation
         const navLinks = document.querySelectorAll('nav a[href^="#"]');
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
-            if (isPagesDirectory && href.startsWith('#')) {
-                link.href = '../index.html' + href;
+            if (pathPrefix && href && href.startsWith('#')) {
+                link.href = `${pathPrefix}index.html${href}`;
             }
         });
     }
@@ -692,12 +699,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Copy functionality for email and website
     document.addEventListener('click', function(e) {
-        if (e.target && e.target.id === 'copy-email') {
-            copyToClipboard('info@aloftx.com', e.target);
+        const copyEmailButton = e.target.closest('#copy-email');
+        if (copyEmailButton) {
+            copyToClipboard('info@aloftx.com', copyEmailButton);
+            return;
         }
         
-        if (e.target && e.target.id === 'copy-website') {
-            copyToClipboard('https://www.aloftx.com', e.target);
+        const copyWebsiteButton = e.target.closest('#copy-website');
+        if (copyWebsiteButton) {
+            copyToClipboard('https://www.aloftx.com', copyWebsiteButton);
         }
     });
 
