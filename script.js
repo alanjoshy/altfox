@@ -656,7 +656,81 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             const form = e.target;
+            const nameInput = form.querySelector('#contact-name');
+            const emailInput = form.querySelector('#contact-email');
+            const messageInput = form.querySelector('#contact-message');
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const messageError = document.getElementById('message-error');
+            const errorBanner = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            
+            const restoreField = (input, errorEl) => {
+                if (!input || !errorEl) return;
+                input.classList.remove('border-red-500', 'focus:ring-red-500', 'focus:border-red-500');
+                errorEl.classList.add('hidden');
+            };
+            
+            const flagField = (input, errorEl, message) => {
+                if (!input || !errorEl) return;
+                errorEl.textContent = message;
+                errorEl.classList.remove('hidden');
+                input.classList.add('border-red-500', 'focus:ring-red-500', 'focus:border-red-500');
+            };
+            
+            // Reset previous errors
+            restoreField(nameInput, nameError);
+            restoreField(emailInput, emailError);
+            restoreField(messageInput, messageError);
+            if (errorBanner && errorText) {
+                errorBanner.classList.add('hidden');
+                errorText.textContent = '';
+            }
+            
+            let hasError = false;
+            const nameValue = nameInput ? nameInput.value.trim() : '';
+            const emailValue = emailInput ? emailInput.value.trim() : '';
+            const messageValue = messageInput ? messageInput.value.trim() : '';
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!nameValue) {
+                flagField(nameInput, nameError, 'Please let us know your name so we can address you properly.');
+                hasError = true;
+            }
+            
+            if (!emailValue) {
+                flagField(emailInput, emailError, 'We need a valid email address to get back to you.');
+                hasError = true;
+            } else if (!emailPattern.test(emailValue)) {
+                flagField(emailInput, emailError, 'That email doesn’t look quite right. Double-check for typos.');
+                hasError = true;
+            }
+            
+            if (!messageValue) {
+                flagField(messageInput, messageError, 'Please share a few details about how we can help.');
+                hasError = true;
+            } else if (messageValue.length < 10) {
+                flagField(messageInput, messageError, 'A little more context helps us respond quickly—try adding a few more words.');
+                hasError = true;
+            }
+            
+            if (hasError) {
+                if (errorBanner && errorText) {
+                    errorText.textContent = 'We couldn’t send your message yet—please fix the highlighted fields and try again.';
+                    errorBanner.classList.remove('hidden');
+                }
+                return;
+            }
+            
+            if (nameInput) nameInput.value = nameValue;
+            if (emailInput) emailInput.value = emailValue;
+            if (messageInput) messageInput.value = messageValue;
+            
             const formData = new FormData(form);
+            formData.set('name', nameValue);
+            formData.set('email', emailValue);
+            formData.set('message', messageValue);
+            
             const submitBtn = document.getElementById('submit-btn');
             
             if (submitBtn) {
@@ -686,7 +760,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Sorry, there was an error sending your message. Please try again or email us directly at info@aloftx.com');
+                    if (errorBanner && errorText) {
+                        errorText.textContent = 'Something went wrong sending your message. Please try again in a moment or email us at info@aloftx.com.';
+                        errorBanner.classList.remove('hidden');
+                    } else {
+                        alert('Sorry, there was an error sending your message. Please try again or email us directly at info@aloftx.com');
+                    }
                 })
                 .finally(() => {
                     // Reset button
