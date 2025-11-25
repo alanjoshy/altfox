@@ -32,7 +32,7 @@ AloftX/
 ├── products/                   # Product pages
 │   └── smap-counterlens.html  # SMAP product details
 └── assets/                    # Static assets
-    ├── logo.ico              # Favicon
+    ├── icons/                 # Logo and favicon files
     └── js/
         └── load-sections.js  # Component loader
 ```

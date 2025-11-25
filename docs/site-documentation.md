@@ -40,7 +40,7 @@ AloftX/
 │   ├── banner-section.html
 │   └── contact-section.html
 ├── assets/
-│   ├── logo.ico
+│   ├── icons/                 # Logo package (Icon and Icon + Text variants)
 │   └── js/
 │       └── load-sections.js       # Dynamic loader inserting components & sections
 ├── styles.css                     # Custom global styling, animations, overrides
@@ -162,7 +162,7 @@ When adding new sections:
 - Current gallery imagery uses Unsplash URLs. For production-grade deployments, consider downloading assets and referencing them from `assets/img/` to avoid external dependency or licence changes.
 - Add descriptive `alt` text for every illustrative image to preserve accessibility.
 - Iconography inside cards uses inline SVG (primarily Heroicons). Keep stroke width consistent (`stroke-width="1.8"`–`2"`) to maintain visual harmony.
-- Favicon: `assets/logo.ico` – update in place if rebranding occurs.
+- Favicon: `assets/icons/Aloft Logo Package/Icon/500x500-icon.png` – update in place if rebranding occurs.
 
 ---
 

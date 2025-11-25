@@ -15,7 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (navLogo) {
-            navLogo.src = `${pathPrefix}assets/logo.ico`;
+            navLogo.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/500x500.png`;
+        }
+        
+        // Fix mobile logo path if it exists
+        const navLogoMobile = document.getElementById('nav-logo-mobile');
+        if (navLogoMobile) {
+            navLogoMobile.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/500x500-land.png`;
         }
         
         if (navLogoLink) {
@@ -593,8 +599,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Close modal buttons
-        if (e.target && (e.target.id === 'close-modal' || e.target.id === 'cancel-btn')) {
+        // Close modal buttons - use closest to handle clicks on child elements
+        if (e.target && (e.target.closest('#close-modal') || e.target.closest('#cancel-btn'))) {
             closeModal();
         }
         
@@ -809,11 +815,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Visual feedback - change icon temporarily
                 const originalIcon = button.innerHTML;
                 button.innerHTML = `
-                    <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                 `;
-                button.classList.add('text-green-600');
+                button.classList.add('text-blue-600');
                 
                 // Show "Copied!!" message under the button
                 showCopiedMessage(button);
@@ -821,7 +827,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Reset icon after 2 seconds
                 setTimeout(() => {
                     button.innerHTML = originalIcon;
-                    button.classList.remove('text-green-600');
+                    button.classList.remove('text-blue-600');
                 }, 2000);
             } else {
                 throw new Error('Copy command failed');
@@ -855,7 +861,7 @@ document.addEventListener('DOMContentLoaded', function() {
             left: ${buttonRect.left + (buttonRect.width / 2)}px;
             top: ${buttonRect.bottom + scrollTop + 8}px;
             transform: translateX(-50%);
-            background: ${type === 'success' ? '#10B981' : '#EF4444'};
+            background: ${type === 'success' ? '#1E3A8A' : '#EF4444'};
             color: white;
             padding: 4px 8px;
             border-radius: 4px;
