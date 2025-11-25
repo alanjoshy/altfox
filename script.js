@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 left: 0;
                 width: 0%;
                 height: 3px;
-                background: linear-gradient(90deg, #16A34A, #059669);
+                background: linear-gradient(90deg, #1E3A8A, #1E40AF);
                 z-index: 9999;
                 transition: width 0.1s ease-out;
             `;
@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const focusableElements = document.querySelectorAll('a, button, input, textarea, select');
     focusableElements.forEach(element => {
         element.addEventListener('focus', function() {
-            this.style.outline = '2px solid #465C33';
+            this.style.outline = '2px solid #1E3A8A';
             this.style.outlineOffset = '2px';
         });
         
