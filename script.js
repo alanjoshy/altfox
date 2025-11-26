@@ -14,14 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
             pathPrefix = '../';
         }
         
-        if (navLogo) {
-            navLogo.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/500x500.png`;
+        // Update mobile and desktop logos separately
+        const navLogoMobile = document.getElementById('nav-logo-mobile');
+        const navLogoDesktop = document.getElementById('nav-logo');
+        
+        if (navLogoMobile) {
+            navLogoMobile.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
         }
         
-        // Fix mobile logo path if it exists
-        const navLogoMobile = document.getElementById('nav-logo-mobile');
-        if (navLogoMobile) {
-            navLogoMobile.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/500x500-land.png`;
+        if (navLogoDesktop) {
+            navLogoDesktop.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
         }
         
         if (navLogoLink) {

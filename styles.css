@@ -83,9 +83,9 @@ body {
         font-size: 1.125rem;
     }
 
-    #navbar #nav-logo-mobile {
-        height: 3rem !important;
-        width: auto !important;
+    #navbar img {
+        width: 1.5rem;
+        height: 1.5rem;
     }
 
     .mobile-menu-button {
