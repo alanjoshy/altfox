@@ -35,12 +35,34 @@ class ComponentLoader {
     }
 
     fixAssetPaths(element, pathPrefix) {
-        // Fix image sources
-        const images = element.querySelectorAll('img[src^="assets/"]');
+        // Fix image sources - handle both "assets/" and "../assets/" paths
+        const images = element.querySelectorAll('img[src*="assets/"]');
         images.forEach(img => {
             const originalSrc = img.getAttribute('src');
-            if (originalSrc && pathPrefix) {
-                img.src = pathPrefix + originalSrc;
+            if (originalSrc && originalSrc.includes('assets/')) {
+                // Decode first in case it's already encoded, then encode properly
+                let decodedSrc = originalSrc;
+                try {
+                    decodedSrc = decodeURIComponent(originalSrc);
+                } catch(e) {
+                    // If decoding fails, use original (might not be encoded)
+                    decodedSrc = originalSrc;
+                }
+                
+                // Extract the assets/ portion and rebuild path
+                const assetsIndex = decodedSrc.indexOf('assets/');
+                const beforeAssets = decodedSrc.substring(0, assetsIndex);
+                const afterAssets = decodedSrc.substring(assetsIndex);
+                
+                // Encode the path segments after "assets/" to handle spaces and special characters
+                const encodedAfterAssets = afterAssets.split('/').map(segment => encodeURIComponent(segment)).join('/');
+                
+                // If pathPrefix is provided, use it; otherwise keep the original relative path structure
+                if (pathPrefix) {
+                    img.src = pathPrefix + encodedAfterAssets;
+                } else {
+                    img.src = beforeAssets + encodedAfterAssets;
+                }
             }
         });
         

@@ -19,11 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const navLogoDesktop = document.getElementById('nav-logo');
         
         if (navLogoMobile) {
-            navLogoMobile.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
+            // Encode path to handle spaces and special characters for hosted environments
+            const relativePath = `assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
+            const encodedPath = relativePath.split('/').map(segment => encodeURIComponent(segment)).join('/');
+            navLogoMobile.src = pathPrefix + encodedPath;
         }
         
         if (navLogoDesktop) {
-            navLogoDesktop.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
+            // Encode path to handle spaces and special characters for hosted environments
+            const relativePath = `assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
+            const encodedPath = relativePath.split('/').map(segment => encodeURIComponent(segment)).join('/');
+            navLogoDesktop.src = pathPrefix + encodedPath;
         }
         
         if (navLogoLink) {
