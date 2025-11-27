@@ -14,22 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
             pathPrefix = '../';
         }
         
-        // Update mobile and desktop logos separately
-        const navLogoMobile = document.getElementById('nav-logo-mobile');
-        const navLogoDesktop = document.getElementById('nav-logo');
-        
-        if (navLogoMobile) {
+        // Update logo path
+        if (navLogo) {
             // Encode path to handle spaces and special characters for hosted environments
             const relativePath = `assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
             const encodedPath = relativePath.split('/').map(segment => encodeURIComponent(segment)).join('/');
-            navLogoMobile.src = pathPrefix + encodedPath;
-        }
-        
-        if (navLogoDesktop) {
-            // Encode path to handle spaces and special characters for hosted environments
-            const relativePath = `assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
-            const encodedPath = relativePath.split('/').map(segment => encodeURIComponent(segment)).join('/');
-            navLogoDesktop.src = pathPrefix + encodedPath;
+            navLogo.src = pathPrefix + encodedPath;
         }
         
         if (navLogoLink) {
