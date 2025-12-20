@@ -1034,15 +1034,14 @@ footer a:hover {
     border: 1px solid rgba(220, 38, 38, 0.1);
 }
 
-/* Holiday Wishes Modal */
+/* Holiday Wishes Modal - Christmas Theme */
 .holiday-wishes-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 10000;
     display: flex;
     align-items: center;
@@ -1059,32 +1058,65 @@ footer a:hover {
 }
 
 .holiday-wishes-modal-content {
-    background: white;
-    border-radius: 1rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    max-width: 500px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 0 4px var(--christmas-red), 0 0 0 8px var(--christmas-green);
+    max-width: 550px;
     width: 100%;
     transform: scale(0.9) translateY(20px);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    position: relative;
 }
 
 .holiday-wishes-modal-overlay.show .holiday-wishes-modal-content {
     transform: scale(1) translateY(0);
 }
 
+/* Decorative border pattern */
+.holiday-wishes-modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--christmas-red) 0px,
+        var(--christmas-red) 20px,
+        var(--christmas-green) 20px,
+        var(--christmas-green) 40px
+    );
+}
+
+.holiday-wishes-modal-content::after {
+    content: '❄';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .holiday-wishes-modal-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    justify-content: center;
+    padding: 2.5rem 1.5rem 1rem 1.5rem;
     position: relative;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
 }
 
 .holiday-wishes-modal-icon {
-    font-size: 3rem;
+    font-size: 4rem;
     line-height: 1;
     animation: gentleBounce 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 @keyframes gentleBounce {
@@ -1092,114 +1124,194 @@ footer a:hover {
         transform: translateY(0) rotate(0deg);
     }
     50% {
-        transform: translateY(-5px) rotate(5deg);
+        transform: translateY(-8px) rotate(5deg);
     }
 }
 
 .holiday-wishes-modal-close {
-    background: transparent;
-    border: none;
-    color: #6B7280;
+    background: white;
+    border: 2px solid var(--christmas-red);
+    color: var(--christmas-red);
     cursor: pointer;
     padding: 0.5rem;
-    border-radius: 0.5rem;
-    transition: all 0.2s ease;
+    border-radius: 50%;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: 1rem;
     right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
 }
 
 .holiday-wishes-modal-close:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: #111827;
+    background: var(--christmas-red);
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
 }
 
 .holiday-wishes-modal-body {
-    padding: 0 1.5rem 1.5rem 1.5rem;
+    padding: 2rem 2.5rem;
     text-align: center;
+    background: white;
+    position: relative;
+}
+
+.holiday-wishes-modal-body::before {
+    content: '✨';
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.6;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+.holiday-wishes-modal-body::after {
+    content: '✨';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    opacity: 0.6;
+    animation: twinkle 2s ease-in-out infinite 1s;
 }
 
 .holiday-wishes-modal-title {
-    font-size: 1.875rem;
+    font-size: 2.25rem;
     font-weight: 700;
-    color: #111827;
-    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--christmas-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 1.25rem 0;
     font-family: 'Playfair Display', serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .holiday-wishes-modal-message {
-    font-size: 1rem;
-    color: #6B7280;
+    font-size: 1.125rem;
+    color: #374151;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.8;
+    font-weight: 400;
 }
 
 .holiday-wishes-modal-footer {
-    padding: 0 1.5rem 1.5rem 1.5rem;
+    padding: 1.5rem 2.5rem 2rem 2.5rem;
     display: flex;
     justify-content: center;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.03) 0%, rgba(5, 150, 105, 0.03) 100%);
+    border-top: 2px solid rgba(220, 38, 38, 0.1);
 }
 
 .holiday-wishes-modal-button {
-    background: linear-gradient(135deg, var(--christmas-red) 0%, #B91C1C 100%);
+    background: linear-gradient(135deg, var(--christmas-red) 0%, #B91C1C 50%, var(--christmas-green) 100%);
+    background-size: 200% 200%;
     color: white;
     border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    font-size: 1.125rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4), 0 0 0 3px rgba(220, 38, 38, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.holiday-wishes-modal-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
 }
 
 .holiday-wishes-modal-button:hover {
-    background: linear-gradient(135deg, #B91C1C 0%, var(--christmas-red) 100%);
-    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
-    transform: translateY(-2px);
+    background-position: 100% 0;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5), 0 0 0 4px rgba(220, 38, 38, 0.2);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.holiday-wishes-modal-button:hover::before {
+    left: 100%;
 }
 
 .holiday-wishes-modal-button:active {
-    transform: translateY(0);
+    transform: translateY(-1px) scale(1.02);
 }
 
 /* Responsive adjustments for holiday modal */
 @media (max-width: 640px) {
     .holiday-wishes-modal-content {
-        max-width: 90%;
+        max-width: 95%;
         margin: 1rem;
+        border-radius: 1.25rem;
     }
     
     .holiday-wishes-modal-header {
-        padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+        padding: 2rem 1.25rem 1rem 1.25rem;
     }
     
     .holiday-wishes-modal-icon {
-        font-size: 2.5rem;
+        font-size: 3rem;
+    }
+    
+    .holiday-wishes-modal-close {
+        width: 2.25rem;
+        height: 2.25rem;
+        top: 0.75rem;
+        right: 0.75rem;
     }
     
     .holiday-wishes-modal-body {
-        padding: 0 1.25rem 1.25rem 1.25rem;
+        padding: 1.5rem 1.5rem;
+    }
+    
+    .holiday-wishes-modal-body::before,
+    .holiday-wishes-modal-body::after {
+        font-size: 1.25rem;
+        top: 0.75rem;
+    }
+    
+    .holiday-wishes-modal-body::before {
+        left: 1rem;
+    }
+    
+    .holiday-wishes-modal-body::after {
+        right: 1rem;
     }
     
     .holiday-wishes-modal-title {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
     }
     
     .holiday-wishes-modal-message {
-        font-size: 0.9375rem;
+        font-size: 1rem;
+        line-height: 1.6;
     }
     
     .holiday-wishes-modal-footer {
-        padding: 0 1.25rem 1.25rem 1.25rem;
+        padding: 1.25rem 1.5rem 1.5rem 1.5rem;
     }
     
     .holiday-wishes-modal-button {
-        padding: 0.625rem 1.5rem;
-        font-size: 0.9375rem;
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+        width: 100%;
     }
 }
 
