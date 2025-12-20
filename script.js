@@ -204,12 +204,12 @@ function initSantaAnimation(retryCount = 0) {
     
     // Determine correct path to animation JSON based on current page location
     const pathname = window.location.pathname;
-    let animationPath = 'assets/animations/Christmas Santa Claus.json';
+    let animationPath = 'assets/animations/Santa Claus.json';
     
     if (pathname.includes('/pages/products/')) {
-        animationPath = '../../assets/animations/Christmas Santa Claus.json';
+        animationPath = '../../assets/animations/Santa Claus.json';
     } else if (pathname.includes('/pages/')) {
-        animationPath = '../assets/animations/Christmas Santa Claus.json';
+        animationPath = '../assets/animations/Santa Claus.json';
     }
     
     // Initialize Lottie animation

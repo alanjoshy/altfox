@@ -1417,7 +1417,7 @@ footer a:hover {
     height: 50px;
     opacity: 1 !important;
     animation: santaWalk 10s linear infinite;
-    right: -50px;
+    left: -50px; /* Start off-screen left */
     z-index: 5;
     display: block !important;
     visibility: visible !important;
@@ -1425,10 +1425,10 @@ footer a:hover {
 
 @keyframes santaWalk {
     0% {
-        right: -50px; /* Start off-screen right */
+        left: -50px; /* Start off-screen left */
     }
     100% {
-        right: calc(100% + 50px); /* Exit off-screen left */
+        left: calc(100% + 50px); /* Exit off-screen right */
     }
 }
 
