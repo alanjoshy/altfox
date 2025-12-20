@@ -43,6 +43,7 @@ class ComponentLoader {
                 // Decode first in case it's already encoded, then encode properly
                 let decodedSrc = originalSrc;
                 try {
+                    // Try to decode - if it fails, it means it's not encoded
                     decodedSrc = decodeURIComponent(originalSrc);
                 } catch(e) {
                     // If decoding fails, use original (might not be encoded)
@@ -51,11 +52,20 @@ class ComponentLoader {
                 
                 // Extract the assets/ portion and rebuild path
                 const assetsIndex = decodedSrc.indexOf('assets/');
+                if (assetsIndex === -1) return; // Safety check
+                
                 const beforeAssets = decodedSrc.substring(0, assetsIndex);
                 const afterAssets = decodedSrc.substring(assetsIndex);
                 
-                // Encode the path segments after "assets/" to handle spaces and special characters
-                const encodedAfterAssets = afterAssets.split('/').map(segment => encodeURIComponent(segment)).join('/');
+                // Encode each path segment after "assets/" to handle spaces and special characters
+                // This ensures proper URL encoding for production servers
+                const pathSegments = afterAssets.split('/');
+                const encodedSegments = pathSegments.map(segment => {
+                    // Don't encode empty segments or "assets" itself
+                    if (!segment || segment === 'assets') return segment;
+                    return encodeURIComponent(segment);
+                });
+                const encodedAfterAssets = encodedSegments.join('/');
                 
                 // If pathPrefix is provided, use it; otherwise keep the original relative path structure
                 if (pathPrefix) {

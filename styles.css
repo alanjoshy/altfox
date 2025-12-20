@@ -12,6 +12,9 @@
     --hover-color: #000000;
     --navy-blue: #1E3A8A;
     --navy-blue-dark: #1E40AF;
+    --hover-green: #1E3A8A;
+    --accent-button: #1E3A8A;
+    --background-block: #E5E7EB;
 }
 
 /* Smooth scrolling for navigation links */
@@ -326,7 +329,7 @@ body {
 
 /* Hero section styling */
 .hero-title {
-    font-family: 'Recoleta', serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.1;
@@ -591,14 +594,7 @@ section:hover {
     box-shadow: 0 4px 12px rgba(70, 92, 51, 0.3);
 }
 
-/* Navigation link hover effects */
-.nav-link {
-    transition: color 0.2s ease;
-}
-
-.nav-link:hover {
-    color: var(--hover-green);
-}
+/* Navigation link hover effects - merged with existing .nav-link definition above */
 
 /* Responsive design */
 @media (max-width: 768px) {
@@ -894,4 +890,468 @@ footer a:hover {
 .carousel-slide.active {
     opacity: 1;
     z-index: 1;
+}
+
+/* ============================================
+   CHRISTMAS THEME - Automatic (Dec 1 - Jan 10)
+   ============================================ */
+
+/* Christmas Theme Variables */
+.christmas-theme {
+    --christmas-red: #DC2626;
+    --christmas-green: #059669;
+    --christmas-gold: #F59E0B;
+    --snow-white: #F8FAFC;
+}
+
+/* Snowflake Animation */
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    25% {
+        transform: translateX(30px) rotate(90deg);
+    }
+    50% {
+        transform: translateX(-20px) rotate(180deg);
+    }
+    75% {
+        transform: translateX(40px) rotate(270deg);
+    }
+    100% {
+        transform: translateY(100vh) translateX(-50px) rotate(360deg);
+        opacity: 0.3;
+    }
+}
+
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: fixed;
+    user-select: none;
+    pointer-events: none;
+    will-change: transform, opacity;
+    filter: blur(0.5px);
+}
+
+/* Christmas Theme - Navigation Enhancements */
+.christmas-theme #navbar {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+    border-bottom: 2px solid rgba(220, 38, 38, 0.1);
+}
+
+.christmas-theme .nav-link:hover {
+    color: var(--christmas-red) !important;
+}
+
+.christmas-theme .nav-link::after {
+    background: linear-gradient(90deg, var(--christmas-red), var(--christmas-green));
+}
+
+.christmas-theme .nav-link.active {
+    color: var(--christmas-red) !important;
+}
+
+/* Christmas Theme - Button Enhancements */
+.christmas-theme button.bg-blue-600,
+.christmas-theme .bg-blue-600 {
+    background: linear-gradient(135deg, var(--christmas-red) 0%, #B91C1C 100%) !important;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.christmas-theme button.bg-blue-600:hover,
+.christmas-theme .bg-blue-600:hover {
+    background: linear-gradient(135deg, #B91C1C 0%, var(--christmas-red) 100%) !important;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    transform: translateY(-2px);
+}
+
+.christmas-theme .learn-more-btn {
+    background: linear-gradient(135deg, var(--christmas-red) 0%, #B91C1C 100%);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.christmas-theme .learn-more-btn:hover {
+    background: linear-gradient(135deg, #B91C1C 0%, var(--christmas-red) 100%);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+}
+
+/* Christmas Theme - Accent Colors */
+.christmas-theme .text-blue-600 {
+    color: var(--christmas-red) !important;
+}
+
+.christmas-theme .bg-blue-100 {
+    background-color: rgba(220, 38, 38, 0.1) !important;
+}
+
+.christmas-theme .border-blue-500 {
+    border-color: var(--christmas-red) !important;
+}
+
+/* Christmas Theme - Section Headers */
+.christmas-theme h2.font-serif::before {
+    content: '🎄 ';
+    opacity: 0.6;
+}
+
+.christmas-theme h2.font-serif::after {
+    content: ' 🎄';
+    opacity: 0.6;
+}
+
+/* Christmas Theme - Card Hover Effects */
+.christmas-theme .milestone-card:hover,
+.christmas-theme .group:hover {
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.15);
+    border-color: rgba(220, 38, 38, 0.2);
+}
+
+/* Christmas Theme - Footer */
+.christmas-theme footer {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+    border-top: 2px solid rgba(220, 38, 38, 0.1);
+}
+
+.christmas-theme .holiday-message {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.christmas-theme .holiday-message p {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(220, 38, 38, 0.1);
+}
+
+/* Holiday Wishes Modal */
+.holiday-wishes-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 1rem;
+}
+
+.holiday-wishes-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.holiday-wishes-modal-content {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.holiday-wishes-modal-overlay.show .holiday-wishes-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.holiday-wishes-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    position: relative;
+}
+
+.holiday-wishes-modal-icon {
+    font-size: 3rem;
+    line-height: 1;
+    animation: gentleBounce 3s ease-in-out infinite;
+}
+
+@keyframes gentleBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+}
+
+.holiday-wishes-modal-close {
+    background: transparent;
+    border: none;
+    color: #6B7280;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.holiday-wishes-modal-close:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #111827;
+}
+
+.holiday-wishes-modal-body {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    text-align: center;
+}
+
+.holiday-wishes-modal-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 1rem 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.holiday-wishes-modal-message {
+    font-size: 1rem;
+    color: #6B7280;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.holiday-wishes-modal-footer {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.holiday-wishes-modal-button {
+    background: linear-gradient(135deg, var(--christmas-red) 0%, #B91C1C 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.holiday-wishes-modal-button:hover {
+    background: linear-gradient(135deg, #B91C1C 0%, var(--christmas-red) 100%);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+    transform: translateY(-2px);
+}
+
+.holiday-wishes-modal-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive adjustments for holiday modal */
+@media (max-width: 640px) {
+    .holiday-wishes-modal-content {
+        max-width: 90%;
+        margin: 1rem;
+    }
+    
+    .holiday-wishes-modal-header {
+        padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+    }
+    
+    .holiday-wishes-modal-icon {
+        font-size: 2.5rem;
+    }
+    
+    .holiday-wishes-modal-body {
+        padding: 0 1.25rem 1.25rem 1.25rem;
+    }
+    
+    .holiday-wishes-modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .holiday-wishes-modal-message {
+        font-size: 0.9375rem;
+    }
+    
+    .holiday-wishes-modal-footer {
+        padding: 0 1.25rem 1.25rem 1.25rem;
+    }
+    
+    .holiday-wishes-modal-button {
+        padding: 0.625rem 1.5rem;
+        font-size: 0.9375rem;
+    }
+}
+
+/* Christmas Theme - Scrollbar */
+.christmas-theme ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--christmas-red) 0%, var(--christmas-green) 100%);
+}
+
+.christmas-theme ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #B91C1C 0%, #047857 100%);
+}
+
+/* Christmas Theme - Loading Animation */
+.christmas-theme .loading {
+    border-top-color: var(--christmas-red);
+}
+
+/* Christmas Theme - Subtle Twinkling Effect */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.christmas-theme .hero-title::after {
+    content: ' ✨';
+    display: inline-block;
+    animation: twinkle 2s ease-in-out infinite;
+    font-size: 0.8em;
+}
+
+/* Christmas Theme - Banner Section Enhancement */
+.christmas-theme section[id="scenic-banner"] .bg-gradient-to-br {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(5, 150, 105, 0.1) 50%, rgba(30, 58, 138, 0.1) 100%);
+}
+
+/* Christmas Theme - Mobile Menu */
+.christmas-theme .mobile-menu-content a:hover {
+    color: var(--christmas-red) !important;
+    background: rgba(220, 38, 38, 0.05);
+}
+
+/* Christmas Theme - Contact Section */
+.christmas-theme #get-in-touch-btn {
+    background: linear-gradient(135deg, var(--christmas-red) 0%, #B91C1C 100%);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+.christmas-theme #get-in-touch-btn:hover {
+    background: linear-gradient(135deg, #B91C1C 0%, var(--christmas-red) 100%);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+}
+
+/* Christmas Theme - Journey Timeline */
+.christmas-theme .milestone-number {
+    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--christmas-green) 100%);
+    color: white !important;
+}
+
+.christmas-theme .road-path {
+    background: linear-gradient(180deg, rgba(220, 38, 38, 0.2) 0%, rgba(5, 150, 105, 0.2) 50%, rgba(220, 38, 38, 0.2) 100%);
+}
+
+/* Responsive: Reduce snowflakes on mobile for performance */
+@media (max-width: 768px) {
+    .christmas-theme .snowflake {
+        font-size: 12px !important;
+    }
+    
+    .christmas-theme h2.font-serif::before,
+    .christmas-theme h2.font-serif::after {
+        content: '';
+    }
+}
+
+/* Santa Claus Animation - Header */
+#navbar {
+    position: relative;
+    overflow: visible; /* Allow Santa to be visible */
+}
+
+#navbar .santa-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5; /* Behind navigation text but above background */
+    overflow: visible;
+}
+
+#santa-animation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    opacity: 1 !important;
+    animation: santaWalk 10s linear infinite;
+    right: -50px;
+    z-index: 5;
+    display: block !important;
+    visibility: visible !important;
+}
+
+@keyframes santaWalk {
+    0% {
+        right: -50px; /* Start off-screen right */
+    }
+    100% {
+        right: calc(100% + 50px); /* Exit off-screen left */
+    }
+}
+
+/* Ensure navigation text is above Santa */
+#navbar .nav-link,
+#navbar a,
+#navbar img,
+#navbar button,
+#navbar .flex,
+#navbar > div {
+    position: relative;
+    z-index: 10; /* Navigation text above Santa */
+}
+
+/* Ensure Santa is visible on all screen sizes */
+@media (min-width: 640px) {
+    #santa-animation {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Disable Christmas theme animations on reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .christmas-theme .snowflake {
+        animation: none;
+        display: none;
+    }
+    
+    .christmas-theme .hero-title::after {
+        animation: none;
+    }
+    
+    #santa-animation {
+        animation: none;
+        display: none;
+    }
 }

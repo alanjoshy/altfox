@@ -1,12 +1,16 @@
 <!-- Navigation Header Component -->
 <nav class="bg-white border-b border-gray-200 fixed w-full top-0 z-50 transition-all duration-300" id="navbar">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-3 sm:py-4">
+    <!-- Santa Claus Animation Container (only visible during holiday season) -->
+    <div id="santa-container" class="santa-container" style="display: none;">
+        <div id="santa-animation"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-3 sm:py-4 relative z-10">
         <div class="flex justify-between items-center">
             <div class="flex items-center">
                 <div class="flex-shrink-0 flex items-center space-x-2">
                     <a id="nav-logo-link" href="index.html">
                         <!-- Logo for both mobile and desktop -->
-                        <img id="nav-logo" src="assets/icons/Aloft%20Logo%20Package/Icon%20%2B%20Text/oie_ZbrH7yAXLL28.png" alt="AloftX Logo" class="h-32 sm:h-36 md:h-12 lg:h-14 xl:h-16 cursor-pointer object-contain w-auto">
+                        <img id="nav-logo" src="assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png" alt="AloftX Logo" class="h-32 sm:h-36 md:h-12 lg:h-14 xl:h-16 cursor-pointer object-contain w-auto">
                     </a>
                 </div>
             </div>
@@ -26,7 +30,7 @@
                     <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                         <div class="py-2">
                             <a href="pages/products/smap-counterlens.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors">AloftX Associated by SMAP</a>
-                            <a href="pages/products/AloftX-pos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors">AloftX POS</a>
+                            <a href="pages/products/gbs-pos.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-colors">AloftX POS</a>
                             
                             <div class="border-t border-gray-100 mt-2">
                                 <a href="pages/products.html" class="block px-4 py-2 text-sm font-medium text-blue-600 hover:bg-gray-50 transition-colors">View All Products →</a>
