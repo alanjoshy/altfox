@@ -1,394 +1,6 @@
 // JavaScript for Area website - Modern Minimal Design
 
-// Christmas Theme - Automatic Date-Based Activation (Dec 1 - Jan 10)
-function isHolidaySeason() {
-    const today = new Date();
-    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-    const day = today.getDate();
-    
-    // December 1-31
-    if (month === 11 && day >= 1) return true;
-    
-    // January 1-10
-    if (month === 0 && day <= 10) return true;
-    
-    return false;
-}
-
-// Get holiday message type (Christmas or New Year)
-function getHolidayMessageType() {
-    const today = new Date();
-    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-    const day = today.getDate();
-    
-    // December 1-31: Christmas
-    if (month === 11 && day >= 1) {
-        return 'christmas';
-    }
-    
-    // January 1-10: New Year
-    if (month === 0 && day <= 10) {
-        return 'newyear';
-    }
-    
-    return null;
-}
-
-// Show holiday wishes modal
-function showHolidayWishesModal() {
-    if (!isHolidaySeason()) return;
-    
-    const messageType = getHolidayMessageType();
-    if (!messageType) return;
-    
-    // Check if user has dismissed the modal
-    const dismissedKey = `holiday-wishes-modal-dismissed-${messageType}`;
-    const dismissed = localStorage.getItem(dismissedKey);
-    if (dismissed) return;
-    
-    // Wait for body to be ready
-    setTimeout(() => {
-        // Create modal overlay
-        const modalOverlay = document.createElement('div');
-        modalOverlay.id = 'holiday-wishes-modal-overlay';
-        modalOverlay.className = 'holiday-wishes-modal-overlay';
-        
-        // Create modal content
-        const modalContent = document.createElement('div');
-        modalContent.className = 'holiday-wishes-modal-content';
-        
-        let title, message, icon, gradient;
-        
-        if (messageType === 'christmas') {
-            title = 'Merry Christmas!';
-            message = 'Wishing you joy, peace, and prosperity this holiday season. Thank you for being part of the AloftX journey.';
-            icon = '🎄';
-            gradient = 'linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%)';
-        } else {
-            title = 'Happy New Year!';
-            message = 'May the new year bring you success, innovation, and endless possibilities. Here\'s to a prosperous 2025!';
-            icon = '🎉';
-            gradient = 'linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(220, 38, 38, 0.1) 100%)';
-        }
-        
-        modalContent.innerHTML = `
-            <div class="holiday-wishes-modal-header">
-                <div class="holiday-wishes-modal-icon">${icon}</div>
-                <button class="holiday-wishes-modal-close" id="close-holiday-wishes-modal" aria-label="Close">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="holiday-wishes-modal-body">
-                <h2 class="holiday-wishes-modal-title">${title}</h2>
-                <p class="holiday-wishes-modal-message">${message}</p>
-            </div>
-            <div class="holiday-wishes-modal-footer">
-                <button class="holiday-wishes-modal-button" id="close-holiday-wishes-modal-btn">Close</button>
-            </div>
-        `;
-        
-        modalContent.style.background = gradient;
-        modalOverlay.appendChild(modalContent);
-        document.body.appendChild(modalOverlay);
-        
-        // Prevent body scroll when modal is open
-        document.body.style.overflow = 'hidden';
-        
-        // Show modal with animation
-        setTimeout(() => {
-            modalOverlay.classList.add('show');
-        }, 100);
-        
-        // Close button handlers
-        const closeModal = () => {
-            modalOverlay.classList.remove('show');
-            setTimeout(() => {
-                modalOverlay.remove();
-                document.body.style.overflow = '';
-                localStorage.setItem(dismissedKey, 'true');
-            }, 300);
-        };
-        
-        const closeBtn = modalContent.querySelector('#close-holiday-wishes-modal');
-        const closeBtnFooter = modalContent.querySelector('#close-holiday-wishes-modal-btn');
-        
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeModal);
-        }
-        
-        if (closeBtnFooter) {
-            closeBtnFooter.addEventListener('click', closeModal);
-        }
-        
-        // Close on overlay click
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                closeModal();
-            }
-        });
-        
-        // Close on Escape key
-        const escapeHandler = (e) => {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('show')) {
-                closeModal();
-                document.removeEventListener('keydown', escapeHandler);
-            }
-        };
-        document.addEventListener('keydown', escapeHandler);
-    }, 800); // Show after page loads
-}
-
-// Load Lottie library dynamically
-function loadLottieLibrary() {
-    return new Promise((resolve, reject) => {
-        if (window.lottie) {
-            resolve();
-            return;
-        }
-        
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js';
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error('Failed to load Lottie library'));
-        document.head.appendChild(script);
-    });
-}
-
-// Initialize Santa Claus animation
-function initSantaAnimation(retryCount = 0) {
-    const navbar = document.getElementById('navbar');
-    let santaContainer = document.getElementById('santa-container');
-    let santaAnimation = document.getElementById('santa-animation');
-    
-    // If container doesn't exist, create it inside navbar
-    if (!santaContainer && navbar) {
-        santaContainer = document.createElement('div');
-        santaContainer.id = 'santa-container';
-        santaContainer.className = 'santa-container';
-        santaContainer.style.display = 'none';
-        santaAnimation = document.createElement('div');
-        santaAnimation.id = 'santa-animation';
-        santaContainer.appendChild(santaAnimation);
-        navbar.insertBefore(santaContainer, navbar.firstChild);
-    }
-    
-    if (!santaContainer || !santaAnimation) {
-        // Retry up to 10 times if navigation hasn't loaded yet
-        if (retryCount < 10) {
-            setTimeout(() => {
-                initSantaAnimation(retryCount + 1);
-            }, 300);
-        } else {
-            console.error('Santa container not found after retries');
-        }
-        return;
-    }
-    
-    // Show container and ensure visibility
-    santaContainer.style.display = 'block';
-    santaContainer.style.visibility = 'visible';
-    santaContainer.style.opacity = '1';
-    santaContainer.style.position = 'absolute';
-    santaContainer.style.top = '0';
-    santaContainer.style.left = '0';
-    santaContainer.style.width = '100%';
-    santaContainer.style.height = '100%';
-    santaContainer.style.zIndex = '5';
-    
-    // Ensure animation div is visible
-    santaAnimation.style.display = 'block';
-    santaAnimation.style.visibility = 'visible';
-    santaAnimation.style.opacity = '1';
-    
-    // Determine correct path to animation JSON based on current page location
-    const pathname = window.location.pathname;
-    let animationPath = 'assets/animations/Santa Claus.json';
-    
-    if (pathname.includes('/pages/products/')) {
-        animationPath = '../../assets/animations/Santa Claus.json';
-    } else if (pathname.includes('/pages/')) {
-        animationPath = '../assets/animations/Santa Claus.json';
-    }
-    
-    // Initialize Lottie animation
-    if (window.lottie) {
-        // Clear any existing animation
-        if (santaAnimation.lottie) {
-            santaAnimation.lottie.destroy();
-        }
-        
-        const anim = lottie.loadAnimation({
-            container: santaAnimation,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: animationPath
-        });
-        
-        anim.addEventListener('data_ready', () => {
-            console.log('Santa animation loaded successfully');
-        });
-        
-        anim.addEventListener('data_failed', (error) => {
-            console.error('Failed to load Santa animation:', error);
-        });
-    } else {
-        console.error('Lottie library not loaded');
-    }
-}
-
-// Activate Christmas theme if within holiday period
-function activateChristmasTheme() {
-    if (isHolidaySeason()) {
-        document.body.classList.add('christmas-theme');
-        
-        // Create snowflake container
-        const snowContainer = document.createElement('div');
-        snowContainer.id = 'snow-container';
-        snowContainer.className = 'snow-container';
-        document.body.appendChild(snowContainer);
-        
-        // Generate snowflakes
-        createSnowflakes();
-        
-        // Santa container is now in navigation.html, no need to create it here
-        
-        // Load Lottie library and initialize Santa animation
-        loadLottieLibrary()
-            .then(() => {
-                // Wait a bit for navigation to be loaded
-                setTimeout(() => {
-                    initSantaAnimation();
-                }, 500);
-            })
-            .catch(error => {
-                console.error('Failed to load Lottie library:', error);
-            });
-        
-        // Show holiday wishes modal
-        showHolidayWishesModal();
-        
-        // Add holiday message to footer if it exists
-        setTimeout(() => {
-            const footer = document.querySelector('footer');
-            if (footer) {
-                const messageType = getHolidayMessageType();
-                let footerMessage = '';
-                
-                if (messageType === 'christmas') {
-                    footerMessage = '🎄 Happy Holidays from AloftX - Wishing You a Season of Growth & Innovation 🎄';
-                } else if (messageType === 'newyear') {
-                    footerMessage = '🎉 Happy New Year from AloftX - Here\'s to a Year of Innovation & Success! 🎉';
-                }
-                
-                if (footerMessage) {
-                    const holidayMessage = document.createElement('div');
-                    holidayMessage.className = 'holiday-message';
-                    holidayMessage.innerHTML = `<p class="text-center text-sm text-gray-600 mt-4">${footerMessage}</p>`;
-                    footer.insertBefore(holidayMessage, footer.firstChild);
-                }
-            }
-        }, 1000);
-    }
-}
-
-// Create animated snowflakes
-function createSnowflakes() {
-    const snowContainer = document.getElementById('snow-container');
-    if (!snowContainer) {
-        // Retry if container not ready
-        setTimeout(createSnowflakes, 100);
-        return;
-    }
-    
-    // Clear any existing snowflakes
-    snowContainer.innerHTML = '';
-    
-    // Adjust snowflake count based on screen size for performance
-    const isMobile = window.innerWidth < 768;
-    const snowflakeCount = isMobile ? 30 : 60; // Fewer on mobile for better performance
-    
-    // Different snowflake characters for variety
-    const snowflakeChars = ['❄', '❅', '❆', '✻', '✼', '✽'];
-    
-    for (let i = 0; i < snowflakeCount; i++) {
-        const snowflake = document.createElement('div');
-        snowflake.className = 'snowflake';
-        
-        // Random snowflake character
-        const charIndex = Math.floor(Math.random() * snowflakeChars.length);
-        snowflake.innerHTML = snowflakeChars[charIndex];
-        
-        // Random properties for each snowflake
-        const size = Math.random() * 12 + 8; // 8-20px
-        const startPosition = Math.random() * 100; // 0-100%
-        const fallDuration = Math.random() * 4 + 3; // 3-7 seconds (slower, more visible)
-        const fallDelay = Math.random() * 3; // 0-3 seconds delay
-        const opacity = Math.random() * 0.4 + 0.6; // 0.6-1.0 (more visible)
-        const horizontalDrift = (Math.random() - 0.5) * 100; // -50px to +50px drift
-        
-        snowflake.style.cssText = `
-            position: fixed;
-            left: ${startPosition}%;
-            top: -30px;
-            font-size: ${size}px;
-            color: rgba(255, 255, 255, ${opacity});
-            pointer-events: none;
-            z-index: 9998;
-            animation: snowfall ${fallDuration}s linear ${fallDelay}s infinite;
-            user-select: none;
-            text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
-            transform: translateX(${horizontalDrift}px);
-        `;
-        
-        snowContainer.appendChild(snowflake);
-    }
-    
-    // Continuously add new snowflakes for continuous effect
-    setInterval(() => {
-        if (document.getElementById('snow-container') && isHolidaySeason()) {
-            const newSnowflake = document.createElement('div');
-            newSnowflake.className = 'snowflake';
-            const charIndex = Math.floor(Math.random() * snowflakeChars.length);
-            newSnowflake.innerHTML = snowflakeChars[charIndex];
-            
-            const size = Math.random() * 12 + 8;
-            const startPosition = Math.random() * 100;
-            const fallDuration = Math.random() * 4 + 3;
-            const opacity = Math.random() * 0.4 + 0.6;
-            const horizontalDrift = (Math.random() - 0.5) * 100;
-            
-            newSnowflake.style.cssText = `
-                position: fixed;
-                left: ${startPosition}%;
-                top: -30px;
-                font-size: ${size}px;
-                color: rgba(255, 255, 255, ${opacity});
-                pointer-events: none;
-                z-index: 9998;
-                animation: snowfall ${fallDuration}s linear 0s infinite;
-                user-select: none;
-                text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
-                transform: translateX(${horizontalDrift}px);
-            `;
-            
-            snowContainer.appendChild(newSnowflake);
-            
-            // Remove snowflake after animation completes
-            setTimeout(() => {
-                if (newSnowflake.parentNode) {
-                    newSnowflake.parentNode.removeChild(newSnowflake);
-                }
-            }, (fallDuration + 1) * 1000);
-        }
-    }, 500); // Add new snowflake every 500ms
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Activate Christmas theme if within date range
-    activateChristmasTheme();
     // Fix navigation paths based on current page location
     function fixNavigationPaths() {
         const pathname = window.location.pathname;
@@ -402,19 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
             pathPrefix = '../';
         }
         
-        // Update logo path
         if (navLogo) {
-            // Encode path to handle spaces and special characters for hosted environments
-            const relativePath = `assets/icons/Aloft Logo Package/Icon + Text/oie_ZbrH7yAXLL28.png`;
-            // Encode each segment, but keep "assets" as-is
-            const pathSegments = relativePath.split('/');
-            const encodedSegments = pathSegments.map(segment => {
-                // Don't encode empty segments or "assets" itself
-                if (!segment || segment === 'assets') return segment;
-                return encodeURIComponent(segment);
-            });
-            const encodedPath = encodedSegments.join('/');
-            navLogo.src = pathPrefix + encodedPath;
+            navLogo.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/512X512 (2).png`;
         }
         
         if (navLogoLink) {
@@ -433,6 +34,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Call immediately
     fixNavigationPaths();
+    
+    // Initialize mobile logo visibility
+    function initMobileLogo() {
+        const logoContainer = document.getElementById('nav-logo-container');
+        if (logoContainer) {
+            if (window.innerWidth <= 767) {
+                // On mobile, hide logo initially (will show on scroll up)
+                const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScrollTop <= 10) {
+                    logoContainer.classList.add('show');
+                } else {
+                    logoContainer.classList.remove('show');
+                }
+            } else {
+                // On desktop, always show
+                logoContainer.classList.add('show');
+            }
+        }
+    }
+    
+    // Initialize logo state on load
+    initMobileLogo();
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        initMobileLogo();
+    });
     
     // Ensure scroll container starts at the correct position (between left and center)
     function resetScrollPosition() {
@@ -693,6 +321,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Track scroll position for mobile logo hide/show
+    let lastScrollTop = 0;
+    let isScrolling = false;
+    
     // Add scroll effect to navigation
     window.addEventListener('scroll', function() {
         const nav = document.getElementById('navbar');
@@ -702,6 +334,31 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 nav.classList.remove('scrolled');
             }
+        }
+        
+        // Mobile logo hide/show on scroll direction
+        const logoContainer = document.getElementById('nav-logo-container');
+        if (logoContainer && window.innerWidth <= 767) {
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Show logo when at top of page
+            if (currentScrollTop <= 10) {
+                logoContainer.classList.add('show');
+            } else {
+                // Hide logo when scrolling down, show when scrolling up
+                if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
+                    // Scrolling down - hide logo
+                    logoContainer.classList.remove('show');
+                } else if (currentScrollTop < lastScrollTop) {
+                    // Scrolling up - show logo
+                    logoContainer.classList.add('show');
+                }
+            }
+            
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+        } else if (logoContainer && window.innerWidth > 767) {
+            // Always show on desktop
+            logoContainer.classList.add('show');
         }
     });
     
@@ -1287,7 +944,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2000);
     }
 
-    // Function to show copy notification - removed as it's unused (showCopiedMessage is used instead)
+    // Function to show copy notification (kept for other uses)
+    function showCopyNotification(message, type = 'success') {
+        // Remove existing notification if any
+        const existingNotification = document.getElementById('copy-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.id = 'copy-notification';
+        notification.className = `fixed top-20 right-4 z-50 px-4 py-2 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full ${
+            type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+        }`;
+        notification.textContent = message;
+        
+        // Add to page
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.classList.remove('translate-x-full');
+        }, 100);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.classList.add('translate-x-full');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
 
     // Carousel functionality - moved inside main DOMContentLoaded
     function initCarousel() {
