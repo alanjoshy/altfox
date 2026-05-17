@@ -8,7 +8,7 @@ window.AloftXTheme = (function () {
     function getInitialTheme() {
         const saved = localStorage.getItem(STORAGE);
         if (saved === 'dark' || saved === 'light') return saved;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        return 'light';
     }
 
     function applyTheme(theme, animate) {
@@ -26,7 +26,7 @@ window.AloftXTheme = (function () {
     }
 
     function toggleTheme() {
-        const current = html.getAttribute('data-theme') || 'dark';
+        const current = html.getAttribute('data-theme') || 'light';
         applyTheme(current === 'dark' ? 'light' : 'dark', true);
     }
 
