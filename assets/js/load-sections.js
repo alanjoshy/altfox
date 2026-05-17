@@ -89,6 +89,10 @@ class ComponentLoader {
         for (const component of components) {
             await this.loadComponent(component.path, component.target, pathPrefix);
         }
+
+        if (window.AloftXTheme && typeof window.AloftXTheme.bindToggles === 'function') {
+            window.AloftXTheme.bindToggles();
+        }
     }
 }
 

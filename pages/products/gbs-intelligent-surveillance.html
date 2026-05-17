@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+    (function(){var t=localStorage.getItem('aloftx-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);})();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AloftX POS Intelligent Surveillance - AloftX Products</title>
@@ -10,10 +13,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
 </head>
-<body class="bg-white">
+<body class="theme-legacy bg-site-primary">
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
@@ -51,7 +54,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-blue-600 uppercase tracking-widest mb-4">Overview</div>
-                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">
+                <h2 class="text-3xl sm:text-4xl font-bold section-heading text-theme-primary mb-4 font-serif">
                     System Overview
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -72,7 +75,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-blue-600 uppercase tracking-widest mb-4">Detailed Analysis</div>
-                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">
+                <h2 class="text-3xl sm:text-4xl font-bold section-heading text-theme-primary mb-4 font-serif">
                     Operational Intelligence Breakdown
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -87,7 +90,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Operational Focus</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Operational Focus</h3>
                     <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
                         <li>• Synchronized video and POS feeds establish tamper-proof visibility.</li>
                         <li>• Cross-check workflows shorten dispute investigation cycles.</li>
@@ -102,7 +105,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17h6m-3 3v-6"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Risk Signals & Alerts</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Risk Signals & Alerts</h3>
                     <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
                         <li>• Motion and void detection trigger tiered alert levels.</li>
                         <li>• Snapshot evidence ships to owners within seconds.</li>
@@ -117,7 +120,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 6h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Stakeholder Outcomes</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Stakeholder Outcomes</h3>
                     <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
                         <li>• Front-line staff stay accountable with transparent workflows.</li>
                         <li>• Managers gain contextual alert history for coaching.</li>
@@ -132,7 +135,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Deployment Snapshot</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Deployment Snapshot</h3>
                     <ul class="text-gray-600 text-sm space-y-2 leading-relaxed">
                         <li>• Edge-ready cameras with encrypted DVR retention.</li>
                         <li>• Cloud dashboard for multi-store oversight.</li>
@@ -148,7 +151,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14">
                 <div class="text-sm font-medium text-blue-600 uppercase tracking-widest mb-4">Visual Insights</div>
-                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">Immersive Monitoring Environment</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold section-heading text-theme-primary mb-4 font-serif">Immersive Monitoring Environment</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">Peek inside the surveillance-powered POS landscape—real-time dashboards, incident playback, and store command centers that keep teams aligned.</p>
             </div>
 
@@ -157,7 +160,7 @@
                     <img src="../../assets/images/products/gbs/gbs-gallery-pos-terminal.jpg"
                          alt="POS terminal with live surveillance overlays"
                          class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-                    <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end">
+                    <figcaption class="absolute inset-0 image-overlay-bottom">
                         <div class="p-6 text-white">
                             <p class="text-sm uppercase tracking-wide text-blue-200">Command Console</p>
                             <h3 class="text-xl font-semibold">Dual-pane monitoring for active lanes</h3>
@@ -169,7 +172,7 @@
                     <img src="../../assets/images/products/gbs/gbs-gallery-security-monitoring.jpg"
                          alt="Security analyst monitoring live incident alerts"
                          class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-                    <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end">
+                    <figcaption class="absolute inset-0 image-overlay-bottom">
                         <div class="p-6 text-white">
                             <p class="text-sm uppercase tracking-wide text-blue-200">Mobile Alerts</p>
                             <h3 class="text-xl font-semibold">Annotated snapshots surface critical events</h3>
@@ -181,7 +184,7 @@
                     <img src="../../assets/images/products/gbs/gbs-gallery-multi-camera.jpg"
                          alt="Security team monitoring multi-camera feeds"
                          class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-                    <figcaption class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end">
+                    <figcaption class="absolute inset-0 image-overlay-bottom">
                         <div class="p-6 text-white">
                             <p class="text-sm uppercase tracking-wide text-blue-200">Incident Review</p>
                             <h3 class="text-xl font-semibold">Timeline controls simplify audit investigations</h3>
@@ -197,7 +200,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-blue-600 uppercase tracking-widest mb-4">Key Features</div>
-                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">
+                <h2 class="text-3xl sm:text-4xl font-bold section-heading text-theme-primary mb-4 font-serif">
                     System Capabilities
                 </h2>
             </div>
@@ -210,7 +213,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Real-time Camera Reflection</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Real-time Camera Reflection</h3>
                     <p class="text-gray-600 text-sm">Displays synchronized footage of both the cashier and the transaction screen, ensuring complete visibility of all activities.</p>
                 </div>
 
@@ -221,7 +224,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Motion-Triggered Greetings</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Motion-Triggered Greetings</h3>
                     <p class="text-gray-600 text-sm">Enhances customer experience while maintaining vigilance through automated welcome features.</p>
                 </div>
 
@@ -232,7 +235,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Automatic Alerts & Snapshots</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Automatic Alerts & Snapshots</h3>
                     <p class="text-gray-600 text-sm">Flags suspicious transactions and captures evidence instantly for immediate review and action.</p>
                 </div>
 
@@ -243,7 +246,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Live Event Forwarding</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Live Event Forwarding</h3>
                     <p class="text-gray-600 text-sm">Sends flagged events to store owners or administrators for immediate action and oversight.</p>
                 </div>
 
@@ -254,7 +257,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Secure DVR Storage</h3>
+                    <h3 class="text-xl font-bold section-heading text-theme-primary mb-3">Secure DVR Storage</h3>
                     <p class="text-gray-600 text-sm">Ensures encrypted and reliable backup of all activities for compliance and investigation purposes.</p>
                 </div>
             </div>
@@ -266,30 +269,30 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-blue-600 uppercase tracking-widest mb-4">Benefits</div>
-                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">
+                <h2 class="text-3xl sm:text-4xl font-bold section-heading text-theme-primary mb-4 font-serif">
                     System Advantages
                 </h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-xl p-6 shadow-md product-card">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Enhanced Fraud Prevention</h3>
+                    <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Enhanced Fraud Prevention</h3>
                     <p class="text-gray-600 text-sm">Multi-layered detection reduces theft risk significantly.</p>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md product-card">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Operational Transparency</h3>
+                    <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Operational Transparency</h3>
                     <p class="text-gray-600 text-sm">Builds customer trust through complete visibility.</p>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md product-card">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Real-Time Decision-Making</h3>
+                    <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Real-Time Decision-Making</h3>
                     <p class="text-gray-600 text-sm">Instant alerts enable quick response to issues.</p>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md product-card">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Scalable Integration</h3>
+                    <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Scalable Integration</h3>
                     <p class="text-gray-600 text-sm">Works seamlessly with existing POS setups.</p>
                 </div>
                 <div class="bg-white rounded-xl p-6 shadow-md product-card">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Secure Archival</h3>
+                    <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Secure Archival</h3>
                     <p class="text-gray-600 text-sm">Data safely stored for compliance and investigations.</p>
                 </div>
             </div>
@@ -301,7 +304,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <div class="text-sm font-medium text-blue-600 uppercase tracking-widest mb-4">User Manual</div>
-                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 font-serif">
+                <h2 class="text-3xl sm:text-4xl font-bold section-heading text-theme-primary mb-4 font-serif">
                     AloftX POS / Transaction System
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -318,7 +321,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Transaction</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Transaction</h3>
                             <p class="text-gray-600 text-sm">Displays completed transactions for verification and reporting.</p>
                         </div>
                     </div>
@@ -332,7 +335,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Petty Cash</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Petty Cash</h3>
                             <p class="text-gray-600 text-sm">Records small non-sales expenses like office supplies.</p>
                         </div>
                     </div>
@@ -346,7 +349,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Cash Lift</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Cash Lift</h3>
                             <p class="text-gray-600 text-sm">Removes excess cash from the register for security.</p>
                         </div>
                     </div>
@@ -360,7 +363,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Lottery PO</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Lottery PO</h3>
                             <p class="text-gray-600 text-sm">Processes lottery winnings directly from the cash drawer.</p>
                         </div>
                     </div>
@@ -374,7 +377,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Supplier PO</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Supplier PO</h3>
                             <p class="text-gray-600 text-sm">Manages payments made to suppliers for goods or services.</p>
                         </div>
                     </div>
@@ -388,7 +391,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Banking</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Banking</h3>
                             <p class="text-gray-600 text-sm">Tracks deposits and withdrawals for reconciliation.</p>
                         </div>
                     </div>
@@ -402,7 +405,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Wages</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Wages</h3>
                             <p class="text-gray-600 text-sm">Records wage or salary payments to employees.</p>
                         </div>
                     </div>
@@ -416,7 +419,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Pay Point PO</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Pay Point PO</h3>
                             <p class="text-gray-600 text-sm">Handles PayPoint transactions like bill payments and recharges.</p>
                         </div>
                     </div>
@@ -430,7 +433,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Cash Back</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Cash Back</h3>
                             <p class="text-gray-600 text-sm">Enables small cash withdrawals during card payments.</p>
                         </div>
                     </div>
@@ -444,7 +447,7 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">Western Union</h3>
+                            <h3 class="text-lg font-bold section-heading text-theme-primary mb-2">Western Union</h3>
                             <p class="text-gray-600 text-sm">Manages money transfers securely via Western Union.</p>
                         </div>
                     </div>
@@ -459,7 +462,7 @@
             <div class="bg-gray-50 rounded-3xl p-12 shadow-lg border border-gray-200 product-card">
                 <div class="text-center">
                     <div class="text-sm font-medium text-blue-600 uppercase tracking-widest mb-4">Get Started</div>
-                    <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6 font-serif">
+                    <h2 class="text-3xl sm:text-4xl font-bold section-heading text-theme-primary mb-6 font-serif">
                         Ready to Secure Your Transactions?
                     </h2>
                     <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
@@ -482,6 +485,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Load all sections -->
+    <script src="../../assets/js/theme.js"></script>
     <script src="../../assets/js/load-sections.js"></script>
     <script src="../../script.js"></script>
 </body>

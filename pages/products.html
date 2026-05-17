@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+    (function(){var t=localStorage.getItem('aloftx-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);})();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - AloftX Technology Solutions</title>
@@ -10,20 +13,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
 </head>
-<body class="bg-white">
+<body class="theme-legacy bg-site-primary">
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
     <!-- Solutions Section Content -->
-    <section id="specifications" class="pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 bg-white">
+    <section id="specifications" class="section-block bg-site-primary pt-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center py-8 sm:py-12 md:py-16 px-4 sm:px-6 mb-8 sm:mb-12">
-                <div class="text-sm font-medium text-blue-600 uppercase tracking-widest mb-4">Our Solutions</div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-4 sm:mb-6 font-serif">Technology Portfolio</h2>
-                <p class="text-base sm:text-lg text-gray-500 font-light mb-8 sm:mb-12 max-w-2xl mx-auto">
+                <p class="eyebrow mb-4">Our Solutions</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold section-heading text-theme-primary mb-4 sm:mb-6 font-serif">Technology Portfolio</h2>
+                <p class="text-base sm:text-lg section-body mb-8 sm:mb-12 max-w-2xl mx-auto">
                     AloftX demonstrates its full technology portfolio, becoming a complete 360° partner for growth.
                 </p>
             </div>
@@ -31,7 +34,7 @@
             <!-- Products Grid Section -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 <!-- AloftX Associated by SMAP Counterlens -->
-                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden flex flex-col">
+                <div class="card-dark overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden flex flex-col">
                     <div class="h-48 relative overflow-hidden">
                         <img 
                             src="../assets/images/products/product-cards/product-card-smap-counterlens.jpg" 
@@ -39,17 +42,17 @@
                             class="w-full h-full object-cover"
                             loading="lazy"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 image-overlay-bottom"></div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center mb-2">
                             <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">New</span>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Intelligent Surveillance System</h3>
+                        <h3 class="text-xl font-bold section-heading text-theme-primary mb-2">Intelligent Surveillance System</h3>
                         <p class="text-gray-600 mb-4 flex-grow">AI-powered transaction monitoring with real-time fraud detection and automated alerts.</p>
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 mt-auto pt-4">
                             <span class="text-xl sm:text-2xl font-bold text-gray-900 text-center sm:text-left">Custom Pricing</span>
-                            <a href="products/smap-counterlens.html" class="bg-blue-600 text-white px-6 py-3 rounded-full text-sm sm:text-base font-medium hover:bg-blue-700 transition-colors text-center whitespace-nowrap">
+                            <a href="products/smap-counterlens.html" class="btn-primary px-6 py-3 text-sm sm:text-base font-medium hover:bg-blue-700 transition-colors text-center whitespace-nowrap">
                                 Learn More →
                             </a>
                         </div>
@@ -57,7 +60,7 @@
                 </div>
 
                 <!-- AloftX POS -->
-                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden flex flex-col">
+                <div class="card-dark overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden flex flex-col">
                     <div class="h-48 relative overflow-hidden">
                         <img 
                             src="../assets/images/products/product-cards/product-card-pos-system.jpg" 
@@ -65,17 +68,17 @@
                             class="w-full h-full object-cover"
                             loading="lazy"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 image-overlay-bottom"></div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center mb-2">
                             <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">POS</span>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Transaction Monitoring System</h3>
+                        <h3 class="text-xl font-bold section-heading text-theme-primary mb-2">Transaction Monitoring System</h3>
                         <p class="text-gray-600 mb-4 flex-grow">Integrated surveillance and POS solution for enhanced transparency and fraud prevention.</p>
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 mt-auto pt-4">
                             <span class="text-xl sm:text-2xl font-bold text-gray-900 text-center sm:text-left">Custom Pricing</span>
-                            <a href="products/gbs-pos.html" class="bg-blue-600 text-white px-6 py-3 rounded-full text-sm sm:text-base font-medium hover:bg-blue-700 transition-colors text-center whitespace-nowrap">
+                            <a href="products/gbs-pos.html" class="btn-primary px-6 py-3 text-sm sm:text-base font-medium hover:bg-blue-700 transition-colors text-center whitespace-nowrap">
                                 Learn More →
                             </a>
                         </div>
@@ -83,7 +86,7 @@
                 </div>
 
                 <!-- GBS Intelligent Surveillance -->
-                <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden flex flex-col">
+                <div class="card-dark overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden flex flex-col">
                     <div class="h-48 relative overflow-hidden">
                         <img 
                             src="../assets/images/products/product-cards/product-card-gbs-surveillance.jpg" 
@@ -91,17 +94,17 @@
                             class="w-full h-full object-cover"
                             loading="lazy"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute inset-0 image-overlay-bottom"></div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex items-center mb-2">
                             <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium">New</span>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">AI-Driven Surveillance & Transaction Monitoring Suite</h3>
+                        <h3 class="text-xl font-bold section-heading text-theme-primary mb-2">AI-Driven Surveillance & Transaction Monitoring Suite</h3>
                         <p class="text-gray-600 mb-4 flex-grow">A cutting-edge solution integrating video surveillance and transaction monitoring to deliver unmatched transparency, fraud prevention, and customer trust at every point of sale.</p>
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 mt-auto pt-4">
                             <span class="text-xl sm:text-2xl font-bold text-gray-900 text-center sm:text-left">Custom Pricing</span>
-                            <a href="products/gbs-intelligent-surveillance.html" class="bg-blue-600 text-white px-6 py-3 rounded-full text-sm sm:text-base font-medium hover:bg-blue-700 transition-colors text-center whitespace-nowrap">
+                            <a href="products/gbs-intelligent-surveillance.html" class="btn-primary px-6 py-3 text-sm sm:text-base font-medium hover:bg-blue-700 transition-colors text-center whitespace-nowrap">
                                 Learn More →
                             </a>
                         </div>
@@ -115,6 +118,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Load all sections -->
+    <script src="../assets/js/theme.js"></script>
     <script src="../assets/js/load-sections.js"></script>
     <script src="../script.js"></script>
 </body>

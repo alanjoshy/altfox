@@ -167,8 +167,15 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenu.className = 'mobile-menu';
             mobileMenu.innerHTML = `
                 <div class="mobile-menu-header">
-                    <h3 class="text-lg font-semibold text-gray-900">Menu</h3>
+                    <h3 class="text-lg font-semibold">Menu</h3>
                     <button class="mobile-menu-close">✕</button>
+                </div>
+                <div class="mobile-menu-theme">
+                    <span>Appearance</span>
+                    <button class="theme-toggle" type="button" aria-label="Toggle dark/light mode" title="Switch theme">
+                        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
                 </div>
                 <div class="mobile-menu-content">
                     <a href="${isInPages ? indexPath + '#about' : '#about'}" class="nav-link">About Us</a>
@@ -269,6 +276,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Also setup after a short delay to handle async component loading
     setTimeout(setupMobileMenu, 500);
+    setTimeout(function() {
+        if (window.AloftXTheme) window.AloftXTheme.bindToggles();
+    }, 700);
     
     // Also fix paths after navigation loads
     setTimeout(fixNavigationPaths, 600);
@@ -442,6 +452,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
     
+    // Reveal observer for .reveal elements
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    function observeRevealElements() {
+        document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+    }
+    observeRevealElements();
+    setTimeout(observeRevealElements, 1500);
+
     // Start observing immediately
     observeAllSections();
     
@@ -481,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 left: 0;
                 width: 0%;
                 height: 3px;
-                background: linear-gradient(90deg, #1E3A8A, #1E40AF);
+                background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-hover));
                 z-index: 9999;
                 transition: width 0.1s ease-out;
             `;
@@ -532,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const focusableElements = document.querySelectorAll('a, button, input, textarea, select');
     focusableElements.forEach(element => {
         element.addEventListener('focus', function() {
-            this.style.outline = '2px solid #1E3A8A';
+            this.style.outline = '2px solid #4A90E2';
             this.style.outlineOffset = '2px';
         });
         
@@ -911,7 +936,7 @@ document.addEventListener('DOMContentLoaded', function() {
             left: ${buttonRect.left + (buttonRect.width / 2)}px;
             top: ${buttonRect.bottom + scrollTop + 8}px;
             transform: translateX(-50%);
-            background: ${type === 'success' ? '#1E3A8A' : '#EF4444'};
+            background: ${type === 'success' ? 'var(--accent-blue)' : '#EF4444'};
             color: white;
             padding: 4px 8px;
             border-radius: 4px;
