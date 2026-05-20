@@ -1,38 +1,97 @@
 // JavaScript for Area website - Modern Minimal Design
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Fix navigation paths based on current page location
-    function fixNavigationPaths() {
+    function getPathPrefix() {
         const pathname = window.location.pathname;
-        const navLogo = document.getElementById('nav-logo');
-        const navLogoLink = document.getElementById('nav-logo-link');
-
-        let pathPrefix = '';
         if (pathname.includes('/pages/products/')) {
-            pathPrefix = '../../';
-        } else if (pathname.includes('/pages/')) {
-            pathPrefix = '../';
+            return '../../';
         }
-        
-        if (navLogo) {
-            navLogo.src = `${pathPrefix}assets/icons/Aloft Logo Package/Icon + Text/512X512 (2).png`;
+        if (pathname.includes('/pages/')) {
+            return '../';
         }
-        
-        if (navLogoLink) {
-            navLogoLink.href = `${pathPrefix}index.html`;
-        }
-        
-        // Fix all relative links in navigation
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
-        navLinks.forEach(link => {
+        return '';
+    }
+
+    function getHomepageUrl(hash) {
+        return getPathPrefix() + 'index.html' + (hash || '');
+    }
+
+    function isHomepage() {
+        const pathname = window.location.pathname;
+        return pathname.endsWith('/') ||
+            pathname.endsWith('/index.html') ||
+            pathname.endsWith('index.html') ||
+            !pathname.includes('/pages/');
+    }
+
+    function fixSiteLinks(root) {
+        const scope = root || document;
+        const pathPrefix = getPathPrefix();
+
+        scope.querySelectorAll('a[href^="#"]').forEach(function(link) {
             const href = link.getAttribute('href');
-            if (pathPrefix && href && href.startsWith('#')) {
-                link.href = `${pathPrefix}index.html${href}`;
+            if (!href) return;
+            if (pathPrefix) {
+                link.href = getHomepageUrl(href);
+            }
+        });
+
+        scope.querySelectorAll('a[href="pages/products.html"], a[href^="pages/products/"]').forEach(function(link) {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            if (href === 'pages/products.html') {
+                link.href = pathPrefix + 'pages/products.html';
+            } else if (href.startsWith('pages/products/')) {
+                link.href = pathPrefix + href;
+            }
+        });
+
+        scope.querySelectorAll('footer a[href^="#"]').forEach(function(link) {
+            const href = link.getAttribute('href');
+            if (href && pathPrefix) {
+                link.href = getHomepageUrl(href);
             }
         });
     }
-    
-    // Call immediately
+
+    function scrollToHashIfPresent() {
+        const hash = window.location.hash;
+        if (!hash || !isHomepage()) return;
+
+        function tryScroll() {
+            const target = document.querySelector(hash);
+            if (target) {
+                const offsetTop = target.offsetTop - 100;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                return true;
+            }
+            return false;
+        }
+
+        if (!tryScroll()) {
+            setTimeout(tryScroll, 400);
+            setTimeout(tryScroll, 1500);
+        }
+    }
+
+    // Fix navigation paths based on current page location
+    function fixNavigationPaths() {
+        const pathPrefix = getPathPrefix();
+        const navLogo = document.getElementById('nav-logo');
+        const navLogoLink = document.getElementById('nav-logo-link');
+
+        if (navLogo) {
+            navLogo.src = pathPrefix + 'assets/icons/Aloft Logo Package/Icon + Text/512X512 (2).png';
+        }
+
+        if (navLogoLink) {
+            navLogoLink.href = pathPrefix + 'index.html';
+        }
+
+        fixSiteLinks(document.getElementById('navbar'));
+        fixSiteLinks(document.querySelector('footer'));
+    }
+
     fixNavigationPaths();
     
     // Initialize mobile logo visibility
@@ -283,54 +342,60 @@ document.addEventListener('DOMContentLoaded', function() {
     // Also fix paths after navigation loads
     setTimeout(fixNavigationPaths, 600);
     
-    // Enhanced smooth scrolling for navigation links with transition effects
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    // Smooth scrolling for in-page section links (homepage only)
+    document.addEventListener('click', function(e) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
+
+        const href = anchor.getAttribute('href');
+        if (!href || href === '#') return;
+
+        if (!isHomepage()) {
             e.preventDefault();
-            const href = this.getAttribute('href');
-            
-            // Check if we're on the homepage or another page
-            const isHomepage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
-            
-            if (!isHomepage && href.startsWith('#')) {
-                // Redirect to homepage with hash
-                window.location.href = '../index.html' + href;
-                return;
-            }
-            
-            const target = document.querySelector(href);
-            if (target) {
-                // Add loading effect to clicked link
-                this.style.opacity = '0.7';
-                this.style.transform = 'scale(0.95)';
-                
-                const offsetTop = target.offsetTop - 100; // Account for fixed header
-                
-                // Smooth scroll with enhanced easing
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-                
-                // Reset link appearance after scroll
-                setTimeout(() => {
-                    this.style.opacity = '1';
-                    this.style.transform = 'scale(1)';
-                }, 800);
-                
-                // Add section highlight effect
-                setTimeout(() => {
-                    target.style.transform = 'scale(1.02)';
-                    target.style.transition = 'transform 0.3s ease-out';
-                    
-                    setTimeout(() => {
-                        target.style.transform = 'scale(1)';
-                    }, 300);
-                }, 500);
-            }
+            window.location.href = getHomepageUrl(href);
+            return;
+        }
+
+        const target = document.querySelector(href);
+        if (!target) {
+            return;
+        }
+
+        e.preventDefault();
+
+        anchor.style.opacity = '0.7';
+        anchor.style.transform = 'scale(0.95)';
+
+        const offsetTop = target.offsetTop - 100;
+
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
         });
+
+        setTimeout(function() {
+            anchor.style.opacity = '1';
+            anchor.style.transform = 'scale(1)';
+        }, 800);
+
+        setTimeout(function() {
+            target.style.transform = 'scale(1.02)';
+            target.style.transition = 'transform 0.3s ease-out';
+            setTimeout(function() {
+                target.style.transform = 'scale(1)';
+            }, 300);
+        }, 500);
     });
-    
+
+    window.addEventListener('aloftx:content-ready', function() {
+        fixNavigationPaths();
+        scrollToHashIfPresent();
+    });
+
+    setTimeout(fixNavigationPaths, 600);
+    setTimeout(fixNavigationPaths, 1500);
+    setTimeout(scrollToHashIfPresent, 1600);
+
     // Track scroll position for mobile logo hide/show
     let lastScrollTop = 0;
     let isScrolling = false;

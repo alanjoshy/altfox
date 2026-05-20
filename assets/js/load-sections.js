@@ -93,6 +93,8 @@ class ComponentLoader {
         if (window.AloftXTheme && typeof window.AloftXTheme.bindToggles === 'function') {
             window.AloftXTheme.bindToggles();
         }
+
+        window.dispatchEvent(new CustomEvent('aloftx:content-ready'));
     }
 }
 
@@ -120,4 +122,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             await loader.loadComponent(section.path, section.target, '');
         }
     }
+
+    window.dispatchEvent(new CustomEvent('aloftx:content-ready'));
 });

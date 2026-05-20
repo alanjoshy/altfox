@@ -229,6 +229,7 @@ h1, h2, h3, h4, h5 {
     letter-spacing: -0.02em;
     line-height: 1.1;
     color: var(--text-primary);
+    font-size: clamp(2.75rem, 9vw, 6rem);
 }
 
 .eyebrow {
@@ -918,10 +919,6 @@ a:focus-visible {
 .theme-legacy .group:hover .group-hover\:text-red-600,
 .theme-legacy .group:hover .group-hover\:text-purple-600 {
     color: var(--accent-blue) !important;
-}
-
-@media (max-width: 768px) {
-    .hero-title { font-size: clamp(2rem, 8vw, 2.75rem); }
 }
 
 @media (max-width: 640px) {
